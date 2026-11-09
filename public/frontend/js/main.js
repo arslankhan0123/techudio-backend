@@ -129,3 +129,13 @@
   document.querySelectorAll('#quoteForm, #contactForm').forEach(setUpForm)
   document.querySelectorAll('[data-dropzone]').forEach(setUpDropzone)
 })()
+
+
+// Sticky header: add a shadow once the page is scrolled
+;(function () {
+  var header = document.querySelector('.site-header')
+  if (!header) return
+  var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8) }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+})()

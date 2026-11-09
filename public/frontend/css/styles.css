@@ -395,9 +395,18 @@ button {
    6. Navbar
    -------------------------------------------------------------------------- */
 .site-header {
-  position: relative;
-  z-index: 40;
+  position: sticky;
+  top: 0;
+  z-index: 1030;
   background-color: rgb(0 0 0 / 0.95);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.25s ease;
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.8);
+  border-bottom: 1px solid rgb(255 255 255 / 0.06);
 }
 
 .site-nav {
