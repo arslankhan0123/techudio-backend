@@ -32,7 +32,7 @@
       <div class="container-fluid container-wide contact-page__body">
         <!-- Form + contact details -->
         <section class="contact-core">
-          <form class="contact-card" id="contactForm" novalidate>
+          <form class="contact-card" id="contactForm" method="POST" action="{{ route('contact.store') }}" enctype="multipart/form-data" novalidate>
 @csrf
             <h2 class="contact-card__title">Send us a Message</h2>
 

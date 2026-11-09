@@ -37,6 +37,95 @@
     slot.hidden = !failing
   }
 
+  /* ---------- AJAX submit + SweetAlert ---------- */
+  var MULTI = ['services', 'assets', 'communication']
+
+  function swal(options) {
+    if (!window.Swal) { alert(options.text || options.title); return Promise.resolve() }
+    return Swal.fire(Object.assign({
+      background: '#0d0d1a',
+      color: '#e2e8f0',
+      confirmButtonColor: '#7c3aed',
+      iconColor: options.icon === 'error' ? '#f43f5e' : '#a78bfa',
+    }, options))
+  }
+
+  function buildFormData(form) {
+    var data = new FormData()
+    new FormData(form).forEach(function (value, key) {
+      if (value instanceof File) return // files are added from the dropzone below
+      data.append(MULTI.indexOf(key) !== -1 ? key + '[]' : key, value)
+    })
+    var dropzone = form.querySelector('[data-dropzone]')
+    if (dropzone && dropzone._files) {
+      dropzone._files.forEach(function (file) { data.append('files[]', file) })
+    }
+    return data
+  }
+
+  function showServerErrors(form, errors) {
+    var first = null
+    Object.keys(errors).forEach(function (key) {
+      var name = key.split('.')[0]
+      var field = form.querySelector('[name="' + name + '"]')
+      if (field && field.type !== 'checkbox' && field.type !== 'radio') {
+        showError(field, errors[key][0])
+        if (!first) first = field
+      }
+    })
+    if (first) first.focus()
+    var list = Object.keys(errors).map(function (k) { return '• ' + errors[k][0] }).join('<br>')
+    swal({ icon: 'error', title: 'Please check the form', html: list })
+  }
+
+  function resetForm(form) {
+    form.reset()
+    var dropzone = form.querySelector('[data-dropzone]')
+    if (dropzone && dropzone._reset) dropzone._reset()
+  }
+
+  function submitForm(form) {
+    var button = form.querySelector('[type="submit"]')
+    var label = button ? button.innerHTML : ''
+    if (button) { button.disabled = true; button.innerHTML = 'Sending…' }
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+        'X-Requested-With': 'XMLHttpRequest',
+        Accept: 'application/json',
+      },
+      body: buildFormData(form),
+    })
+      .then(function (response) {
+        return response.json().catch(function () { return {} }).then(function (body) {
+          return { ok: response.ok, status: response.status, body: body }
+        })
+      })
+      .then(function (res) {
+        if (res.ok) {
+          resetForm(form)
+          return swal({
+            icon: 'success',
+            title: form.id === 'quoteForm' ? 'Quote request received!' : 'Message sent!',
+            text: res.body.message,
+            confirmButtonText: 'Great',
+          })
+        }
+        if (res.status === 422 && res.body.errors) return showServerErrors(form, res.body.errors)
+        if (res.status === 429) return swal({ icon: 'error', title: 'Too many attempts', text: 'Please wait a minute and try again.' })
+        if (res.status === 419) return swal({ icon: 'error', title: 'Session expired', text: 'Please refresh the page and try again.' })
+        swal({ icon: 'error', title: 'Something went wrong', text: res.body.message || 'Please try again in a moment.' })
+      })
+      .catch(function () {
+        swal({ icon: 'error', title: 'Network error', text: 'Check your connection and try again.' })
+      })
+      .finally(function () {
+        if (button) { button.disabled = false; button.innerHTML = label }
+      })
+  }
+
   function setUpForm(form) {
     var fields = form.querySelectorAll('[required], [data-error-invalid]')
 
@@ -55,8 +144,7 @@
         return
       }
 
-      // Send the form data to your backend here, then show the confirmation.
-      bootstrap.Modal.getOrCreateInstance(document.getElementById('thankYouModal')).show()
+      submitForm(form)
     })
 
     // Clear a field's error as soon as the visitor edits it
@@ -90,6 +178,7 @@
         remove.textContent = 'Remove'
         remove.addEventListener('click', function () {
           files.splice(index, 1)
+          dropzone._files = files
           render()
         })
         item.appendChild(name)
@@ -99,9 +188,13 @@
       list.hidden = files.length === 0
     }
 
+    dropzone._files = files
+    dropzone._reset = function () { files = []; dropzone._files = files; render() }
+
     function add(fileList) {
       if (!fileList || !fileList.length) return
       files = files.concat(Array.prototype.slice.call(fileList))
+      dropzone._files = files
       render()
     }
 

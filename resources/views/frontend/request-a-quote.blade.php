@@ -15,7 +15,7 @@
         <img class="quote-page__glow--bottom" src="{{ asset('frontend/assets/glows/quote-aurora-bottom.svg') }}" alt="" />
       </div>
 
-      <form class="quote-card" id="quoteForm" novalidate>
+      <form class="quote-card" id="quoteForm" method="POST" action="{{ route('quote.store') }}" enctype="multipart/form-data" novalidate>
 @csrf
         <header class="quote-card__header">
           <div class="quote-card__intro">

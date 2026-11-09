@@ -32,30 +32,29 @@
             @php
                 $nav = [
                     ['Dashboard', 'dashboard', 'M3 12l9-9 9 9M5 10v10h14V10'],
-                    ['AI Models', null, 'M12 2a4 4 0 014 4v1a4 4 0 01-8 0V6a4 4 0 014-4zM4 21v-1a6 6 0 0112 0v1'],
-                    ['Users', null, 'M17 20h5v-2a3 3 0 00-5.4-1.8M9 20H2v-2a3 3 0 015.4-1.8M16 7a4 4 0 11-8 0 4 4 0 018 0z'],
-                    ['Analytics', null, 'M3 3v18h18M7 15l4-4 3 3 5-6'],
-                    ['Automations', null, 'M13 10V3L4 14h7v7l9-11h-7z'],
+                    ['Quote Requests', 'admin.quotes.index', 'M9 12h6M9 16h6M9 8h2M5 3h10l4 4v14H5z', \App\Models\QuoteRequest::unread()->count()],
+                    ['Contact Messages', 'admin.contacts.index', 'M4 6h16v12H4zM4 6l8 7 8-7', \App\Models\ContactMessage::unread()->count()],
                     ['Settings', 'profile.edit', 'M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z'],
                 ];
             @endphp
             <nav class="flex-1 px-3 py-6 space-y-1">
                 <p class="px-3 mb-2 text-[10px] uppercase tracking-[0.2em] text-slate-500">Main</p>
-                @foreach ($nav as [$label, $route, $icon])
-                    @php $active = $route && request()->routeIs($route); @endphp
+                @foreach ($nav as $item)
+                    @php
+                        [$label, $route, $icon] = $item;
+                        $badge = $item[3] ?? 0;
+                        $active = $route && request()->routeIs(str_replace('.index', '.*', $route));
+                    @endphp
                     <a href="{{ $route ? route($route) : '#' }}"
                        class="ai-nav-link {{ $active ? 'ai-nav-active' : '' }}">
                         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="{{ $icon }}"/></svg>
                         <span>{{ $label }}</span>
+                        @if ($badge)
+                            <span class="ml-auto min-w-[1.25rem] px-1.5 py-0.5 rounded-full text-[10px] font-semibold text-center text-white ai-gradient-bg">{{ $badge }}</span>
+                        @endif
                     </a>
                 @endforeach
             </nav>
-
-            <div class="m-3 p-4 rounded-2xl ai-card-glow">
-                <p class="text-sm font-semibold">AI Credits</p>
-                <p class="text-xs text-slate-400 mt-1">72% of monthly quota used</p>
-                <div class="mt-3 h-1.5 rounded-full bg-white/10 overflow-hidden"><div class="h-full w-[72%] ai-gradient-bg"></div></div>
-            </div>
         </aside>
         <div x-show="sidebar" @click="sidebar=false" x-cloak class="fixed inset-0 z-30 bg-black/60 lg:hidden"></div>
 
@@ -107,5 +106,23 @@
             </main>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        (function () {
+            const light = () => document.documentElement.classList.contains('light');
+            const theme = () => ({ background: light() ? '#ffffff' : '#0d0d1a', color: light() ? '#1e1b3a' : '#e2e8f0', confirmButtonColor: '#7c3aed' });
+            @if (session('success'))
+                Swal.fire({ ...theme(), icon: 'success', title: @json(session('success')), timer: 2200, showConfirmButton: false, toast: true, position: 'top-end' });
+            @endif
+            document.addEventListener('submit', function (e) {
+                const form = e.target;
+                if (!form.matches('[data-confirm]') || form.dataset.confirmed) return;
+                e.preventDefault();
+                Swal.fire({ ...theme(), icon: 'warning', title: form.dataset.confirm, text: 'This cannot be undone.', showCancelButton: true,
+                    confirmButtonText: 'Yes, delete', confirmButtonColor: '#e11d48', cancelButtonColor: '#475569' })
+                    .then(r => { if (r.isConfirmed) { form.dataset.confirmed = 1; form.submit(); } });
+            });
+        })();
+    </script>
 </body>
 </html>

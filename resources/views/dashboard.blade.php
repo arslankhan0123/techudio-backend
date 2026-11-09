@@ -15,9 +15,9 @@
 
     @php
         $stats = [
-            ['Total Users', number_format(\App\Models\User::count()), '+12.4%', 'from-violet-500 to-fuchsia-500'],
+            ['Total Users', number_format(\App\Models\User::count()), '+12.4%', 'from-violet-500 to-indigo-500'],
             ['AI Requests', '48.2K', '+28.1%', 'from-cyan-400 to-blue-500'],
-            ['Tokens Used', '3.6M', '+9.7%', 'from-fuchsia-500 to-pink-500'],
+            ['Tokens Used', '3.6M', '+9.7%', 'from-indigo-500 to-blue-500'],
             ['Avg. Latency', '182ms', '-14.2%', 'from-emerald-400 to-teal-500'],
         ];
         $bars = [38, 52, 45, 70, 62, 85, 74, 92, 68, 80, 96, 88];
@@ -65,7 +65,7 @@
             <h3 class="font-display font-semibold">Model Performance</h3>
             <p class="text-xs text-slate-400">Accuracy across active models</p>
             <div class="mt-6 space-y-5">
-                @foreach ([['Text Generation', 94, 'from-violet-500 to-fuchsia-500'], ['Vision', 88, 'from-cyan-400 to-blue-500'], ['Speech-to-Text', 91, 'from-fuchsia-500 to-pink-500'], ['Embeddings', 97, 'from-emerald-400 to-teal-500']] as [$m, $p, $g])
+                @foreach ([['Text Generation', 94, 'from-violet-500 to-indigo-500'], ['Vision', 88, 'from-cyan-400 to-blue-500'], ['Speech-to-Text', 91, 'from-indigo-500 to-blue-500'], ['Embeddings', 97, 'from-emerald-400 to-teal-500']] as [$m, $p, $g])
                     <div>
                         <div class="flex justify-between text-sm"><span>{{ $m }}</span><span class="text-slate-400">{{ $p }}%</span></div>
                         <div class="mt-2 h-2 rounded-full bg-white/5 overflow-hidden"><div class="h-full rounded-full bg-gradient-to-r {{ $g }}" style="width: {{ $p }}%"></div></div>
