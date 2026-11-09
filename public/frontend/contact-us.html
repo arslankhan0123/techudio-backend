@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — Techudio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400&family=Outfit:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-xl site-nav" aria-label="Main">
+        <div class="container-fluid container-nav">
+          <a class="navbar-brand site-brand" href="index.html">
+            <img src="assets/icons/logo-mark.svg" alt="" />
+            <span>Techudio</span>
+          </a>
+          <button
+            class="navbar-toggler site-nav__toggle"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#siteNav"
+            aria-controls="siteNav"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <div class="collapse navbar-collapse" id="siteNav">
+            <div class="site-nav__panel">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#services">Our Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">How it Works</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#our-work">Our Work</a></li>
+              </ul>
+              <div class="site-nav__actions">
+                <a class="btn btn-quote" href="request-a-quote.html">Get a Free Quote</a>
+                <a class="btn btn-contact" href="contact-us.html">Contact us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="contact-page">
+      <div class="contact-page__backdrop" aria-hidden="true">
+        <div class="contact-page__ribbon"><img src="assets/images/ribbon.png" alt="" /></div>
+        <img class="contact-page__aurora" src="assets/images/aurora.png" alt="" />
+      </div>
+
+      <!-- Hero -->
+      <section class="contact-hero">
+        <div class="contact-hero__glows" aria-hidden="true">
+          <img src="assets/glows/contact-hero-purple.svg" alt="" />
+          <img src="assets/glows/contact-hero-cyan.svg" alt="" />
+        </div>
+
+        <div class="eyebrow eyebrow--round">
+          <span class="eyebrow__dot"><img src="assets/glows/eyebrow-dot.svg" alt="" /></span>
+          <span class="eyebrow__text">Get In Touch</span>
+        </div>
+        <h1 class="contact-hero__title">
+          Let’s Build Something<br />
+          <span class="text-gradient">Amazing Together</span>
+        </h1>
+        <p class="contact-hero__lead">
+          Have an idea or a complex business problem? Drop us a message. Our team of software architects and
+          engineers is ready to help you deploy production-ready digital solutions.
+        </p>
+        <div class="contact-hero__divider"></div>
+      </section>
+
+      <div class="container-fluid container-wide contact-page__body">
+        <!-- Form + contact details -->
+        <section class="contact-core">
+          <form class="contact-card" id="contactForm" novalidate>
+            <h2 class="contact-card__title">Send us a Message</h2>
+
+            <div class="contact-card__fields">
+              <div class="row row-cols-1 row-cols-md-2 form-row">
+                <div class="col">
+                  <div class="field field--contact">
+                    <label class="field__label" for="fullName"> Full Name </label>
+                    <input
+                      class="form-control"
+                      id="fullName"
+                      name="fullName"
+                      type="text"
+                      placeholder="John Doe"
+                      required
+                      data-error-required="Please enter your full name."
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="field field--contact">
+                    <label class="field__label" for="email"> Email Address </label>
+                    <input
+                      class="form-control"
+                      id="email"
+                      name="email"
+                      type="email"
+                      placeholder="john@example.com"
+                      required
+                      data-error-required="Please enter your email address."
+                      data-error-invalid="Please enter a valid email address."
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row row-cols-1 row-cols-md-2 form-row">
+                <div class="col">
+                  <div class="field field--contact">
+                    <label class="field__label" for="phone"> Phone Number </label>
+                    <input
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      type="tel"
+                      placeholder="+1 (555) 000-0000"
+                      required
+                      data-error-required="Please enter your phone number."
+                    />
+                    <div class="invalid-feedback"></div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="field field--contact">
+                    <label class="field__label" for="company"> Company Name (Optional) </label>
+                    <input
+                      class="form-control"
+                      id="company"
+                      name="company"
+                      type="text"
+                      placeholder="Acme Corp"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="field field--contact">
+                <label class="field__label" for="message">Your Message</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  name="message"
+                  placeholder="Tell us about your project, timeline, and goals..."
+                  required
+                  data-error-required="Please tell us about your project."
+                ></textarea>
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+
+            <button class="btn btn-solid w-100" type="submit">Send Message</button>
+          </form>
+
+          <aside class="contact-info">
+            <div class="info-card">
+              <img class="info-card__glow" src="assets/glows/info-purple.svg" alt="" />
+              <div class="info-card__icon" style="--info-color: var(--tq-violet)">
+                <img src="assets/icons/map-pin.svg" alt="" />
+              </div>
+              <div class="info-card__body">
+                <h3 class="info-card__title">Office Location</h3>
+                <div class="info-card__values">
+                  <p>Remote Working</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-card">
+              <img class="info-card__glow" src="assets/glows/info-cyan.svg" alt="" />
+              <div class="info-card__icon" style="--info-color: var(--tq-cyan)">
+                <img src="assets/icons/mail.svg" alt="" />
+              </div>
+              <div class="info-card__body">
+                <h3 class="info-card__title">General &amp; Support Email</h3>
+                <div class="info-card__values">
+                  <p>hello@techudio.com</p>
+                  <p>support@techudio.com</p>
+                </div>
+              </div>
+            </div>
+            <div class="info-card">
+              <img class="info-card__glow" src="assets/glows/info-green.svg" alt="" />
+              <div class="info-card__icon" style="--info-color: var(--tq-mint)">
+                <img src="assets/icons/phone.svg" alt="" />
+              </div>
+              <div class="info-card__body">
+                <h3 class="info-card__title">Contact Phone</h3>
+                <div class="info-card__values">
+                  <p>+1 (555) 123-4567</p>
+                  <p>Available 24/7 for Enterprise Support</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <!-- FAQs -->
+        <section class="faqs">
+          <header class="faqs__head">
+            <h2 class="faqs__title">Frequently Asked Questions</h2>
+            <p class="faqs__lead">Quick answers to help you navigate our development process.</p>
+          </header>
+
+          <div class="faqs__list">
+            <div class="faq-card">
+              <button
+                class="faq-card__toggle"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq-1"
+                aria-expanded="true"
+                aria-controls="faq-1"
+              >
+                <span class="faq-card__question">What services do you offer?</span>
+                <img src="assets/icons/chevron-down.svg" alt="" />
+              </button>
+              <div class="collapse show" id="faq-1">
+                <p class="faq-card__answer">
+                  We offer end-to-end digital solutions including custom web development, native iOS and
+                  Android mobile app development, custom API architecture, AI integrations, continuous
+                  maintenance, QA testing, and cloud infrastructure management.
+                </p>
+              </div>
+            </div>
+            <div class="faq-card">
+              <button
+                class="faq-card__toggle"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq-2"
+                aria-expanded="true"
+                aria-controls="faq-2"
+              >
+                <span class="faq-card__question">What is your typical project timeline?</span>
+                <img src="assets/icons/chevron-down.svg" alt="" />
+              </button>
+              <div class="collapse show" id="faq-2">
+                <p class="faq-card__answer">
+                  Timelines depend heavily on the project complexity. A standard Minimum Viable Product (MVP)
+                  typically takes 6 to 10 weeks, while robust enterprise-grade architectures may span several
+                  months with iterative agile sprint deliverables.
+                </p>
+              </div>
+            </div>
+            <div class="faq-card">
+              <button
+                class="faq-card__toggle"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq-3"
+                aria-expanded="true"
+                aria-controls="faq-3"
+              >
+                <span class="faq-card__question">Do you offer ongoing maintenance?</span>
+                <img src="assets/icons/chevron-down.svg" alt="" />
+              </button>
+              <div class="collapse show" id="faq-3">
+                <p class="faq-card__answer">
+                  Yes, we provide scalable post-launch maintenance, regular framework updates, security
+                  audits, and continuous performance optimization packages customized for your project's SLAs.
+                </p>
+              </div>
+            </div>
+            <div class="faq-card">
+              <button
+                class="faq-card__toggle"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#faq-4"
+                aria-expanded="true"
+                aria-controls="faq-4"
+              >
+                <span class="faq-card__question">How do you handle communication during projects?</span>
+                <img src="assets/icons/chevron-down.svg" alt="" />
+              </button>
+              <div class="collapse show" id="faq-4">
+                <p class="faq-card__answer">
+                  We follow structured agile methodologies. You get a dedicated technical product manager,
+                  direct Slack channel access, and routine sprint demo videos ensuring absolute transparency
+                  from roadmap to deployment.
+                </p>
+              </div>
+            </div>
+            <button class="btn btn-solid" type="button">See more</button>
+          </div>
+        </section>
+      </div>
+
+      <!-- Call to action -->
+      <section class="cta-banner">
+        <div class="cta-banner__text">
+          <h2 class="cta-banner__title">Ready to Transform Your Ideas?</h2>
+          <p class="cta-banner__lead">
+            Get a high-performance team on your roadmap. Join thousands of creators, scaling startups, and
+            enterprise brands building on Techudio.
+          </p>
+        </div>
+        <a class="btn btn-solid btn-solid--pill" href="request-a-quote.html">Start Building</a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <img class="site-footer__glow site-footer__glow--logo" src="assets/images/footer-glow-a.png" alt="" />
+      <img class="site-footer__glow" src="assets/images/footer-glow-b.png" alt="" />
+
+      <div class="container-fluid container-narrow site-footer__inner">
+        <div class="site-footer__brand">
+          <p class="site-footer__managed">Managed by</p>
+          <div class="site-footer__logo">
+            <img src="assets/icons/footer-logo-mark.svg" alt="" />
+            <p>Techudio</p>
+            <div class="pressed"></div>
+          </div>
+          <ul class="site-footer__socials">
+            <li>
+              <a href="#" aria-label="YouTube"><img src="assets/icons/youtube.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="X"><img src="assets/icons/x-twitter.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="Discord"><img src="assets/icons/discord.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="Reddit"><img src="assets/icons/reddit.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="GitHub"><img src="assets/icons/github.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="Telegram"><img src="assets/icons/telegram.svg" alt="" /></a>
+            </li>
+          </ul>
+          <p class="site-footer__copy">© 2026 Techudio. All rights reserved.</p>
+        </div>
+
+        <div class="site-footer__nav">
+          <div class="site-footer__col site-footer__col--main">
+            <p class="site-footer__heading site-footer__heading--bold">Techudio</p>
+            <ul>
+              <li><a href="#">Grants</a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Media Kit</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Disclaimer</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col site-footer__col--connect">
+            <p class="site-footer__heading">Get Connected</p>
+            <ul>
+              <li><a href="#">Ecosystem</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__lang">
+            <img src="assets/icons/globe.svg" alt="" />
+            <span>en</span>
+            <img src="assets/icons/chevron-lang.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Thank-you overlay, opened by js/main.js after a successful submit -->
+    <div
+      class="modal fade thankyou"
+      id="thankYouModal"
+      tabindex="-1"
+      aria-labelledby="thankYouTitle"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="thankyou__backdrop"><img src="assets/images/aurora.png" alt="" /></div>
+
+          <div class="thankyou__card">
+            <div class="thankyou__icon bg-brand"><img src="assets/icons/check.svg" alt="" /></div>
+            <div class="thankyou__text">
+              <h2 class="thankyou__title" id="thankYouTitle">Thank You for Contacting Techudio!</h2>
+              <p class="thankyou__subtitle bg-brand text-gradient">We've received your inquiry.</p>
+              <div class="thankyou__body">
+                <p>
+                  Our experts are now reviewing your requirements and will contact you shortly with a
+                  personalized proposal.
+                </p>
+                <p>We appreciate the opportunity to work with you.</p>
+              </div>
+            </div>
+            <div class="thankyou__action">
+              <a class="bg-brand" href="index.html">
+                <span>Back to Home</span>
+                <img src="assets/icons/rocket.svg" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

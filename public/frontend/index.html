@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Techudio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@400&family=Outfit:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="site-header">
+      <nav class="navbar navbar-expand-xl site-nav" aria-label="Main">
+        <div class="container-fluid container-nav">
+          <a class="navbar-brand site-brand" href="index.html">
+            <img src="assets/icons/logo-mark.svg" alt="" />
+            <span>Techudio</span>
+          </a>
+          <button
+            class="navbar-toggler site-nav__toggle"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#siteNav"
+            aria-controls="siteNav"
+            aria-expanded="false"
+            aria-label="Toggle menu"
+          >
+            <span></span><span></span><span></span>
+          </button>
+          <div class="collapse navbar-collapse" id="siteNav">
+            <div class="site-nav__panel">
+              <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#services">Our Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#how-it-works">How it Works</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#our-work">Our Work</a></li>
+              </ul>
+              <div class="site-nav__actions">
+                <a class="btn btn-quote" href="request-a-quote.html">Get a Free Quote</a>
+                <a class="btn btn-contact" href="contact-us.html">Contact us</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero__ribbons" aria-hidden="true">
+          <div class="hero__ribbon hero__ribbon--left">
+            <img src="assets/images/home_left_hero_bg.png" alt="" />
+          </div>
+          <div class="hero__ribbon hero__ribbon--right">
+            <img src="assets/images/home_hero_right_bg.png" alt="" />
+          </div>
+        </div>
+
+        <div class="container-fluid container-hero hero__content">
+          <h1 class="hero__title">Transforming Ideas into Intelligent Digital Solutions</h1>
+          <p class="hero__lead">
+            We help individuals, startups, SMEs, and enterprises turn innovative ideas into scalable digital
+            products. From concept and design to development, deployment, and ongoing support, we build
+            reliable solutions that drive growth, improve efficiency, and create lasting business value.
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn-quote" href="request-a-quote.html">Get a Free Quote</a>
+            <a class="btn btn-contact" href="contact-us.html">Contact us</a>
+          </div>
+          <p class="hero__tagline">
+            You built it with AI? We help you launch, improve, maintain and scale it.
+          </p>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="services">
+        <div class="services__decor" aria-hidden="true">
+          <div class="services__glow services__glow--purple"></div>
+          <div class="services__glow services__glow--green"></div>
+          <div class="services__topline"></div>
+        </div>
+
+        <div class="container-fluid container-wide services__inner">
+          <header class="services__head">
+            <div class="eyebrow eyebrow--square">
+              <span class="eyebrow__dot"></span>
+              <span class="eyebrow__text">Our services</span>
+            </div>
+            <h2 class="services__title">
+              Everything You Need to
+              <span class="bg-brand text-gradient" style="--brand-angle: 124.49deg">Build &amp; Scale</span>
+            </h2>
+            <p class="services__lead">
+              From idea to deployment — Techudio delivers end-to-end software solutions across web, mobile,
+              AI, cloud, and beyond.
+            </p>
+          </header>
+
+          <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 services__grid">
+            <div class="col">
+              <article class="service-card" style="--accent: 74 158 255">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🌐</span></div>
+                  <h3 class="service-card__title">Web Solutions</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Website Development</li>
+                    <li>Website Design</li>
+                    <li>Website Redesign</li>
+                    <li>Website Maintenance</li>
+                    <li>Custom Admin Panel</li>
+                  </ul>
+                  <div class="collapse" id="service-more-1">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>Web Application Development</li>
+                      <li>CMS Development</li>
+                      <li>Multilingual Website</li>
+                      <li>E-Commerce Development</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-1"
+                  aria-expanded="false"
+                  aria-controls="service-more-1"
+                >
+                  <span class="when-closed">▼ +4 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 25 251 155">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>📱</span></div>
+                  <h3 class="service-card__title">Mobile App Solutions</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Android App Development</li>
+                    <li>iOS App Development</li>
+                    <li>Cross-Platform App Development</li>
+                    <li>App Localization</li>
+                    <li>Mobile App Design</li>
+                  </ul>
+                  <div class="collapse" id="service-more-2">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>App Maintenance</li>
+                      <li>App Testing</li>
+                      <li>App Modernization</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-2"
+                  aria-expanded="false"
+                  aria-controls="service-more-2"
+                >
+                  <span class="when-closed">▼ +3 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 169 98 255">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🤖</span></div>
+                  <h3 class="service-card__title">AI &amp; Machine Learning</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>AI Chatbot Development</li>
+                    <li>AI Agent Development</li>
+                    <li>AI Integration</li>
+                    <li>Live Agent Development</li>
+                    <li>Large Language Model Integration (ChatGPT, Claude, Gemini etc)</li>
+                  </ul>
+                  <div class="collapse" id="service-more-3">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>Machine Learning Model</li>
+                      <li>NLP</li>
+                      <li>AI Automation</li>
+                      <li>Data Pipeline</li>
+                      <li>Model Fine-tuning</li>
+                      <li>Prompt Testing</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-3"
+                  aria-expanded="false"
+                  aria-controls="service-more-3"
+                >
+                  <span class="when-closed">▼ +6 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 255 107 157">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🎨</span></div>
+                  <h3 class="service-card__title">UI/UX &amp; Creative Design</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>UI/UX Design</li>
+                    <li>Wireframing</li>
+                    <li>Mockup Design</li>
+                    <li>Dark Mode Design</li>
+                  </ul>
+                </div>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 255 159 67">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🚀</span></div>
+                  <h3 class="service-card__title">App Store &amp; Deployment</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Google Play Store Publishing</li>
+                    <li>Apple App Store Publishing</li>
+                    <li>App Store Optimization (ASO)</li>
+                    <li>Huawei AppGallery Publishing</li>
+                    <li>Samsung Store Publishing</li>
+                  </ul>
+                  <div class="collapse" id="service-more-5">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>Beta Testing</li>
+                      <li>Website Deployment</li>
+                      <li>Cloud Deployment</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-5"
+                  aria-expanded="false"
+                  aria-controls="service-more-5"
+                >
+                  <span class="when-closed">▼ +4 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 31 207 241">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🛠️</span></div>
+                  <h3 class="service-card__title">Maintenance &amp; Support</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Website Maintenance</li>
+                    <li>Mobile App Maintenance</li>
+                    <li>Dependency &amp; Library Updates</li>
+                    <li>Bug Fixes</li>
+                    <li>Software Documentation</li>
+                  </ul>
+                  <div class="collapse" id="service-more-6">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>Performance Optimization</li>
+                      <li>Security Updates</li>
+                      <li>Backup</li>
+                      <li>Code Review</li>
+                      <li>Technical Support</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-6"
+                  aria-expanded="false"
+                  aria-controls="service-more-6"
+                >
+                  <span class="when-closed">▼ +6 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 255 213 18">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>⚡</span></div>
+                  <h3 class="service-card__title">Integrations &amp; Custom Development</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Custom API Development</li>
+                    <li>Third-Party API Integration</li>
+                    <li>WhatsApp Business API Integration</li>
+                    <li>Social Media API Integration</li>
+                    <li>Custom Library Integration</li>
+                  </ul>
+                  <div class="collapse" id="service-more-7">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>SDK Integration</li>
+                      <li>Payment Gateway</li>
+                      <li>CRM/ERP</li>
+                      <li>Live Chat</li>
+                      <li>OAuth / SSO</li>
+                      <li>Maps</li>
+                      <li>Push Notifications</li>
+                      <li>Analytics</li>
+                      <li>Data Scraping</li>
+                      <li>Summarization Tool</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-7"
+                  aria-expanded="false"
+                  aria-controls="service-more-7"
+                >
+                  <span class="when-closed">▼ +10 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 56 189 248">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>☁️</span></div>
+                  <h3 class="service-card__title">Cloud &amp; Infrastructure</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Web Hosting</li>
+                    <li>Cloud Infrastructure</li>
+                    <li>Server Configuration</li>
+                    <li>Domain &amp; DNS Management</li>
+                    <li>SSL Certificate Setup</li>
+                  </ul>
+                  <div class="collapse" id="service-more-8">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>Database</li>
+                      <li>Server Migration</li>
+                      <li>Speed Optimization</li>
+                      <li>Accessibility</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-8"
+                  aria-expanded="false"
+                  aria-controls="service-more-8"
+                >
+                  <span class="when-closed">▼ +5 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 52 211 153">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🧪</span></div>
+                  <h3 class="service-card__title">QA Testing</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Functional Testing</li>
+                    <li>Cross Device Testing</li>
+                    <li>Performance Testing</li>
+                    <li>Mobile App Store Compliance Testing</li>
+                    <li>Security Testing</li>
+                  </ul>
+                  <div class="collapse" id="service-more-9">
+                    <ul class="service-card__list service-card__list--more">
+                      <li>Regression Testing</li>
+                      <li>Smoke Testing</li>
+                      <li>Automated Testing</li>
+                      <li>Manual Testing</li>
+                    </ul>
+                  </div>
+                </div>
+                <button
+                  class="service-card__more"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#service-more-9"
+                  aria-expanded="false"
+                  aria-controls="service-more-9"
+                >
+                  <span class="when-closed">▼ +3 more</span>
+                  <span class="when-open">▲ Show less</span>
+                </button>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col">
+              <article class="service-card" style="--accent: 192 132 252">
+                <div class="service-card__glow" aria-hidden="true"></div>
+                <div class="service-card__head">
+                  <div class="icon-tile"><span>🏗️</span></div>
+                  <h3 class="service-card__title">Architecture</h3>
+                </div>
+                <div class="service-card__rule"></div>
+                <div class="service-card__lists">
+                  <ul class="service-card__list">
+                    <li>Software Architecture</li>
+                    <li>Database Design &amp; Architecture</li>
+                    <li>API Architecture &amp; Design</li>
+                    <li>Technical Documentation</li>
+                  </ul>
+                </div>
+                <div class="service-card__foot">
+                  <div>
+                    <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="services__cta">
+            <a class="btn-3d" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats + How it works -->
+      <div class="aurora-band">
+        <div class="aurora-band__bg" aria-hidden="true"><img src="assets/images/aurora.png" alt="" /></div>
+
+        <div class="aurora-band__body">
+          <section class="container-fluid container-stats stats">
+            <h2 class="stats__title">Trusted by leading<br />companies worldwide.</h2>
+            <ul class="stats__list">
+              <li>
+                <p class="stats__value stats__value--pink text-gradient">500+</p>
+                <p class="stats__label">Enterprise clients</p>
+              </li>
+              <li>
+                <p class="stats__value stats__value--cyan text-gradient">99.9%</p>
+                <p class="stats__label">Uptime guaranteed</p>
+              </li>
+              <li>
+                <p class="stats__value stats__value--green text-gradient">50M+</p>
+                <p class="stats__label">Lines of code delivered</p>
+              </li>
+            </ul>
+          </section>
+
+          <section id="how-it-works" class="container-fluid container-stats how">
+            <div class="how__inner">
+              <header class="how__head">
+                <h2 class="how__title">How it works</h2>
+                <p class="how__lead">A simple 7-step process to go from inquiry to a dedicated team.</p>
+              </header>
+              <ol class="row row-cols-1 row-cols-md-2 how__grid">
+                <li class="col">
+                  <div class="step-card step-card--cyan">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">1</span>
+                      <h3 class="step-card__title">Check Our Services</h3>
+                    </div>
+                    <p class="step-card__text">
+                      Browse our capabilities and choose the services that fit your project.
+                    </p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+                <li class="col">
+                  <div class="step-card step-card--violet">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">2</span>
+                      <h3 class="step-card__title">Click to Get a Quote</h3>
+                    </div>
+                    <p class="step-card__text">
+                      Start the conversation with a quick request - no commitment required.
+                    </p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+                <li class="col">
+                  <div class="step-card step-card--sun">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">3</span>
+                      <h3 class="step-card__title">Fill Up the Form</h3>
+                    </div>
+                    <p class="step-card__text">
+                      Share a few details about your project, timeline, and goals.
+                    </p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+                <li class="col">
+                  <div class="step-card step-card--neon">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">4</span>
+                      <h3 class="step-card__title">Submit</h3>
+                    </div>
+                    <p class="step-card__text">Send your request and we'll review it right away.</p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+                <li class="col">
+                  <div class="step-card step-card--cyan">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">5</span>
+                      <h3 class="step-card__title">Our Analysis</h3>
+                    </div>
+                    <p class="step-card__text">
+                      We'll assess scope, complexity, and the best team fit for your needs.
+                    </p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+                <li class="col">
+                  <div class="step-card step-card--violet">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">6</span>
+                      <h3 class="step-card__title">Our Team Will Get Back to You Within 24 Hours</h3>
+                    </div>
+                    <p class="step-card__text">
+                      Expect a response with next steps, timelines, and a clear proposal.
+                    </p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+                <li class="col">
+                  <div class="step-card step-card--sun">
+                    <div class="step-card__top">
+                      <span class="step-card__badge">7</span>
+                      <h3 class="step-card__title">Hire Our Team</h3>
+                    </div>
+                    <p class="step-card__text">
+                      Kick off your project with a dedicated team that's ready to deliver.
+                    </p>
+                    <div class="step-card__connector" aria-hidden="true"></div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Our work -->
+      <section id="our-work" class="work">
+        <div class="container-fluid container-narrow work__inner">
+          <div class="work__glow" aria-hidden="true"><img src="assets/images/work-glow.png" alt="" /></div>
+
+          <div class="work__head">
+            <h2 class="work__title">Our Work</h2>
+            <a class="work__more" href="#">Explore more our work<span class="pressed"></span></a>
+          </div>
+
+          <a class="work-feature" href="#">
+            <img class="work-feature__image" src="assets/images/work-helium.png" alt="" />
+            <h3 class="work-feature__title">
+              <span>Helium brings real-world </span>
+              <span>5G networks on Techudio </span>
+            </h3>
+            <div class="pressed"></div>
+          </a>
+
+          <div class="row row-cols-1 row-cols-md-3 work__grid">
+            <div class="col">
+              <a class="work-card" href="#">
+                <img class="work-card__image" src="assets/images/work-gainforest.png" alt="" />
+                <div class="work-card__body">
+                  <h3 class="work-card__title">
+                    <span>GainForest brings </span>
+                    <span>transparency to climate </span>
+                    <span>preservation efforts </span>
+                  </h3>
+                  <span class="work-card__arrow"
+                    ><img src="assets/icons/arrow-circle-right.svg" alt=""
+                  /></span>
+                </div>
+                <div class="pressed"></div>
+              </a>
+            </div>
+            <div class="col">
+              <a class="work-card" href="#">
+                <img class="work-card__image" src="assets/images/work-hivemapper.png" alt="" />
+                <div class="work-card__body">
+                  <h3 class="work-card__title">
+                    <span>Hivemapper </span>
+                    <span>decentralizes mapping </span>
+                    <span>with better real-time data </span>
+                    <span>and community </span>
+                    <span>incentives </span>
+                  </h3>
+                  <span class="work-card__arrow"
+                    ><img src="assets/icons/arrow-circle-right.svg" alt=""
+                  /></span>
+                </div>
+                <div class="pressed"></div>
+              </a>
+            </div>
+            <div class="col">
+              <a class="work-card work-card--offset" href="#">
+                <img class="work-card__image" src="assets/images/work-asics.png" alt="" />
+                <div class="work-card__body">
+                  <h3 class="work-card__title">
+                    <span>ASICS builds loyalty </span>
+                    <span>program with Techudio </span>
+                    <span>Pay </span>
+                  </h3>
+                  <span class="work-card__arrow"
+                    ><img src="assets/icons/arrow-circle-right.svg" alt=""
+                  /></span>
+                </div>
+                <div class="pressed"></div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials">
+        <div class="testimonials__decor" aria-hidden="true">
+          <img
+            class="testimonials__glow testimonials__glow--purple"
+            src="assets/glows/testimonials-purple.svg"
+            alt=""
+          />
+          <img
+            class="testimonials__glow testimonials__glow--green"
+            src="assets/glows/testimonials-green.svg"
+            alt=""
+          />
+        </div>
+
+        <div class="container-fluid container-testimonials testimonials__inner">
+          <header class="testimonials__head">
+            <p class="testimonials__eyebrow">Ecosystem Validation</p>
+            <h2 class="testimonials__title">Trusted by builders pushing boundaries</h2>
+            <p class="testimonials__lead">
+              Discover why the world's most innovative decentralized developers and product leads choose the
+              Techudio network to deploy at scale.
+            </p>
+          </header>
+
+          <div class="row row-cols-1 row-cols-lg-3 testimonials__grid">
+            <div class="col">
+              <figure class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <div class="testimonial-card__meta">
+                    <span class="testimonial-card__tag">DEFI</span>
+                    <span class="testimonial-card__mark">
+                      <img src="assets/icons/quote-purple.svg" alt="" />
+                    </span>
+                  </div>
+                  <blockquote class="testimonial-card__quote">
+                    &quot;Building our decentralized order book on Techudio was the only way to achieve
+                    sub-second finality. The developer tooling and execution speed are unmatched.&quot;
+                  </blockquote>
+                </div>
+                <figcaption class="testimonial-card__author">
+                  <img class="testimonial-card__avatar" src="assets/images/avatar-alex-thorne.png" alt="" />
+                  <div class="testimonial-card__who">
+                    <span class="testimonial-card__name">Alex Thorne</span>
+                    <span class="testimonial-card__role"
+                      >Core Contributor, <strong>Phoenix Trade</strong></span
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col">
+              <figure class="testimonial-card testimonial-card--featured">
+                <div class="testimonial-card__top">
+                  <div class="testimonial-card__meta">
+                    <span class="testimonial-card__tag">INFRASTRUCTURE</span>
+                    <span class="testimonial-card__mark">
+                      <img src="assets/icons/quote-green.svg" alt="" />
+                    </span>
+                  </div>
+                  <blockquote class="testimonial-card__quote">
+                    &quot;We migrated our entire NFT infrastructure to Techudio. Minting cost dropped from
+                    dollars to fractions of a cent, allowing us to onboard millions of mainstream users.&quot;
+                  </blockquote>
+                </div>
+                <figcaption class="testimonial-card__author">
+                  <img class="testimonial-card__avatar" src="assets/images/avatar-elena-rostova.png" alt="" />
+                  <div class="testimonial-card__who">
+                    <span class="testimonial-card__name">Elena Rostova</span>
+                    <span class="testimonial-card__role"
+                      >VP of Product, <strong>Metaplex Studio</strong></span
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+            <div class="col">
+              <figure class="testimonial-card">
+                <div class="testimonial-card__top">
+                  <div class="testimonial-card__meta">
+                    <span class="testimonial-card__tag">HARDWARE / IOT</span>
+                    <span class="testimonial-card__mark">
+                      <img src="assets/icons/quote-purple.svg" alt="" />
+                    </span>
+                  </div>
+                  <blockquote class="testimonial-card__quote">
+                    &quot;The computational model of Sealevel allows us to run state transitions in parallel.
+                    It completely redefines what is possible for high-throughput consumer dApps.&quot;
+                  </blockquote>
+                </div>
+                <figcaption class="testimonial-card__author">
+                  <img class="testimonial-card__avatar" src="assets/images/avatar-marcus-vance.png" alt="" />
+                  <div class="testimonial-card__who">
+                    <span class="testimonial-card__name">Marcus Vance</span>
+                    <span class="testimonial-card__role"
+                      >Lead Systems Architect, <strong>Helium Network</strong></span
+                    >
+                  </div>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <p class="testimonials__trust">
+            Ready to scale your application?
+            <a href="#">Read the Sealevel documentation</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <img class="site-footer__glow site-footer__glow--logo" src="assets/images/footer-glow-a.png" alt="" />
+      <img class="site-footer__glow" src="assets/images/footer-glow-b.png" alt="" />
+
+      <div class="container-fluid container-narrow site-footer__inner">
+        <div class="site-footer__brand">
+          <p class="site-footer__managed">Managed by</p>
+          <div class="site-footer__logo">
+            <img src="assets/icons/footer-logo-mark.svg" alt="" />
+            <p>Techudio</p>
+            <div class="pressed"></div>
+          </div>
+          <ul class="site-footer__socials">
+            <li>
+              <a href="#" aria-label="YouTube"><img src="assets/icons/youtube.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="X"><img src="assets/icons/x-twitter.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="Discord"><img src="assets/icons/discord.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="Reddit"><img src="assets/icons/reddit.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="GitHub"><img src="assets/icons/github.svg" alt="" /></a>
+            </li>
+            <li>
+              <a href="#" aria-label="Telegram"><img src="assets/icons/telegram.svg" alt="" /></a>
+            </li>
+          </ul>
+          <p class="site-footer__copy">© 2026 Techudio. All rights reserved.</p>
+        </div>
+
+        <div class="site-footer__nav">
+          <div class="site-footer__col site-footer__col--main">
+            <p class="site-footer__heading site-footer__heading--bold">Techudio</p>
+            <ul>
+              <li><a href="#">Grants</a></li>
+              <li><a href="#">Projects</a></li>
+              <li><a href="#">Media Kit</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Disclaimer</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__col site-footer__col--connect">
+            <p class="site-footer__heading">Get Connected</p>
+            <ul>
+              <li><a href="#">Ecosystem</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Newsletter</a></li>
+            </ul>
+          </div>
+          <div class="site-footer__lang">
+            <img src="assets/icons/globe.svg" alt="" />
+            <span>en</span>
+            <img src="assets/icons/chevron-lang.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
