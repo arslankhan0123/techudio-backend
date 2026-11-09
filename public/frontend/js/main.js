@@ -232,3 +232,87 @@
   window.addEventListener('scroll', onScroll, { passive: true })
   onScroll()
 })()
+
+
+// Scroll-reveal: sections and cards fade/slide in as they enter the viewport
+;(function () {
+  if (!('IntersectionObserver' in window)) return
+  var selectors = ['main > section', '.service-card', '.step-card', '.work-card', '.faq-card', '.testimonial-card',
+    '.stats__item', '.contact-card', '.quote-card', '.cta-banner', '.site-footer__inner']
+  var seen = new Set(), targets = []
+  selectors.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) { if (!seen.has(el)) { seen.add(el); targets.push(el) } })
+  })
+  var counts = new Map()
+  targets.forEach(function (el) {
+    var n = counts.get(el.parentElement) || 0
+    counts.set(el.parentElement, n + 1)
+    el.style.setProperty('--tq-delay', Math.min(n, 6) * 90 + 'ms')
+    el.classList.add('tq-reveal')
+  })
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return
+      entry.target.classList.add('is-visible')
+      io.unobserve(entry.target)
+    })
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
+  targets.forEach(function (el) { io.observe(el) })
+})()
+
+
+// Real-time card effects: per-card rhythm, light sweep, cursor spotlight and 3D tilt
+;(function () {
+  var cards = document.querySelectorAll('.service-card, .step-card, .work-card, .testimonial-card, .faq-card, .stats__item')
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  cards.forEach(function (card, i) {
+    card.style.setProperty('--tq-bob', (5 + (i % 4) * 0.8) + 's')
+    card.style.setProperty('--tq-bob-delay', (-(i * 0.9) % 6) + 's')
+    if (reduce) return
+    if (!card.matches('.faq-card, .stats__item')) {
+      var shine = document.createElement('span'); shine.className = 'tq-shine'; card.appendChild(shine)
+    }
+    var spot = document.createElement('span'); spot.className = 'tq-spot'; card.appendChild(spot)
+    card.classList.add('tq-tilt')
+    var strength = card.matches('.faq-card') ? 3 : 8
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect()
+      var x = (e.clientX - r.left) / r.width
+      var y = (e.clientY - r.top) / r.height
+      card.style.setProperty('--mx', x * 100 + '%')
+      card.style.setProperty('--my', y * 100 + '%')
+      card.style.setProperty('--ry', ((x - 0.5) * strength * 2).toFixed(2) + 'deg')
+      card.style.setProperty('--rx', ((0.5 - y) * strength * 2).toFixed(2) + 'deg')
+    })
+    card.addEventListener('pointerleave', function () {
+      card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg')
+    })
+  })
+})()
+
+
+// Count-up numbers in the stats section when they scroll into view (e.g. "500+", "99.9%", "50M+")
+;(function () {
+  var els = document.querySelectorAll('.stats__value')
+  if (!els.length || !('IntersectionObserver' in window)) return
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return
+      io.unobserve(entry.target)
+      var el = entry.target
+      var m = el.textContent.trim().match(/^([^\d]*)([\d.,]+)(.*)$/)
+      if (!m) return
+      var target = parseFloat(m[2].replace(/,/g, ''))
+      var decimals = (m[2].split('.')[1] || '').length
+      var start = performance.now(), dur = 1800
+      function tick(now) {
+        var p = Math.min((now - start) / dur, 1)
+        var eased = 1 - Math.pow(1 - p, 3)
+        el.textContent = m[1] + (target * eased).toFixed(decimals) + m[3]
+        if (p < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+    })
+  }, { threshold: 0.5 })
+  els.forEach(function (el) { io.observe(el) })
+})()

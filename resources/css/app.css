@@ -63,3 +63,65 @@ html.light .bg-white\/5 { background-color: rgba(124,58,237,.06); }
 html.light .bg-white\/10 { background-color: rgba(124,58,237,.1); }
 html.light .hover\:bg-white\/5:hover, html.light .hover\:bg-white\/10:hover { background-color: rgba(124,58,237,.08); }
 html.light .bg-black\/60, html.light .bg-black\/70 { background-color: rgba(30,27,58,.35); }
+
+
+/* ---------- Admin animations ---------- */
+@property --ai-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+@keyframes ai-rise { from { opacity: 0; translate: 0 22px; } to { opacity: 1; translate: 0 0; } }
+@keyframes ai-grow-y { from { scale: 1 0; } to { scale: 1 1; } }
+@keyframes ai-grow-x { from { scale: 0 1; } to { scale: 1 1; } }
+@keyframes ai-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+@keyframes ai-pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(124,58,237,.55); } 100% { box-shadow: 0 0 0 14px rgba(124,58,237,0); } }
+@keyframes ai-spin { to { --ai-angle: 360deg; } }
+@keyframes ai-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+@keyframes ai-bar-breathe { 0%, 100% { filter: brightness(1); } 50% { filter: brightness(1.25); } }
+
+.ai-anim { opacity: 0; animation: ai-rise .7s cubic-bezier(.22,1,.36,1) forwards; animation-delay: var(--ai-delay, 0ms); }
+
+.ai-card { transition: transform .25s ease-out, box-shadow .35s ease, border-color .35s ease; transform-style: preserve-3d; }
+/* rotating gradient border, always on */
+.ai-card::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
+    background: conic-gradient(from var(--ai-angle), transparent 0deg, rgba(139,92,246,.9) 60deg, rgba(34,211,238,.9) 110deg, transparent 170deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude;
+    animation: ai-spin 8s linear infinite; opacity: .55; transition: opacity .3s ease;
+}
+/* cursor spotlight */
+.ai-card::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity .4s ease;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(139,92,246,.18), transparent 50%);
+}
+.ai-card:hover {
+    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-4px);
+    border-color: rgba(139,92,246,.4);
+    box-shadow: 0 28px 55px -25px rgba(99,102,241,.65), 0 0 35px -12px rgba(34,211,238,.35);
+}
+.ai-card:hover::before { opacity: 1; }
+.ai-card:hover::after { opacity: 1; animation-duration: 2.5s; }
+.ai-float { animation: ai-bob 6s ease-in-out infinite; animation-delay: var(--ai-bob-delay, 0s); }
+.ai-float:hover { animation-play-state: paused; }
+
+.ai-bar { transform-origin: bottom; animation: ai-grow-y 1s cubic-bezier(.22,1,.36,1) both, ai-bar-breathe 3s ease-in-out infinite; animation-delay: var(--ai-delay, 0ms), var(--ai-delay, 0ms); transition: translate .25s ease; }
+.ai-bar:hover { translate: 0 -4px; filter: brightness(1.35); }
+.ai-progress { transform-origin: left; animation: ai-grow-x 1.2s cubic-bezier(.22,1,.36,1) both; animation-delay: .3s; }
+
+.ai-btn { position: relative; overflow: hidden; }
+.ai-btn::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.35) 50%, transparent 70%); translate: -120% 0; transition: translate .7s ease; }
+.ai-btn:hover::after { translate: 120% 0; }
+
+.ai-logo { transition: rotate .6s cubic-bezier(.22,1,.36,1); }
+a:hover > .ai-logo, .ai-logo:hover { rotate: 180deg; }
+.ai-logo-pulse { animation: ai-pulse-ring 2.4s ease-out infinite; }
+.ai-gradient-text { background-size: 200% auto; animation: ai-shimmer 6s linear infinite; }
+
+.ai-nav-link svg { transition: translate .25s ease, scale .25s ease; }
+.ai-nav-link:hover svg { translate: 3px 0; scale: 1.1; }
+tbody tr { transition: background-color .2s ease, box-shadow .2s ease; }
+tbody tr:hover { background-color: rgba(139,92,246,.06); box-shadow: inset 3px 0 0 #8b5cf6; }
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-anim { opacity: 1; animation: none; }
+    .ai-card:hover { transform: none; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}

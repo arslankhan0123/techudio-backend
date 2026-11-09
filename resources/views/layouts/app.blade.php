@@ -80,7 +80,7 @@
                     </span>
                     <div x-data="{ open:false }" class="relative">
                         <button @click="open=!open" class="flex items-center gap-3 pl-2 pr-3 py-1.5 rounded-xl hover:bg-white/5">
-                            <span class="w-8 h-8 rounded-lg ai-gradient-bg grid place-items-center text-sm font-bold text-white">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+                            <span class="w-8 h-8 rounded-lg ai-gradient-bg ai-logo-pulse grid place-items-center text-sm font-bold text-white">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                             <span class="hidden sm:block text-left leading-tight">
                                 <span class="block text-sm font-medium">{{ Auth::user()->name }}</span>
                                 <span class="block text-[11px] text-violet-300 capitalize">{{ Auth::user()->role }}</span>
@@ -106,6 +106,36 @@
             </main>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // staggered entrance
+            const items = document.querySelectorAll('header.sticky + div, main > form, main > .grid > *, main > .ai-card, main > div > .ai-card, main > div:not(.grid):not(:has(.ai-card))');
+            items.forEach((el, i) => {
+                el.style.setProperty('--ai-delay', Math.min(i, 10) * 70 + 'ms');
+                el.classList.add('ai-anim');
+                el.addEventListener('animationend', () => { el.classList.remove('ai-anim'); el.style.opacity = 1; }, { once: true });
+            });
+            document.querySelectorAll('.ai-bar').forEach((el, i) => el.style.setProperty('--ai-delay', 300 + i * 60 + 'ms'));
+            // gentle continuous float on stat cards (dashboard top row)
+            document.querySelectorAll('main > .grid:first-child > .ai-card').forEach((el, i) => {
+                el.style.setProperty('--ai-bob-delay', (-i * 1.3) + 's');
+                setTimeout(() => el.classList.add('ai-float'), 1000);
+            });
+            // spotlight + 3D tilt following the cursor
+            document.querySelectorAll('.ai-card').forEach((card) => {
+                card.addEventListener('pointermove', (e) => {
+                    const r = card.getBoundingClientRect();
+                    const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+                    const k = r.width > 600 ? 2 : 6;
+                    card.style.setProperty('--mx', (x * 100) + '%');
+                    card.style.setProperty('--my', (y * 100) + '%');
+                    card.style.setProperty('--ry', ((x - .5) * k * 2).toFixed(2) + 'deg');
+                    card.style.setProperty('--rx', ((.5 - y) * k * 2).toFixed(2) + 'deg');
+                });
+                card.addEventListener('pointerleave', () => { card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg'); });
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         (function () {

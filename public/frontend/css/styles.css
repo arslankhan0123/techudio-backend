@@ -3308,3 +3308,203 @@ button {
     line-height: 44px;
   }
 }
+
+
+/* ===== Scroll reveal + base hover (restored) ===== */
+.tq-reveal { opacity: 0; translate: 0 28px; transition: opacity .7s cubic-bezier(.22,1,.36,1), translate .7s cubic-bezier(.22,1,.36,1); transition-delay: var(--tq-delay, 0ms); }
+.tq-reveal.is-visible { opacity: 1; translate: 0 0; }
+.work-card__arrow { transition: translate .3s ease; }
+.work-card:hover .work-card__arrow { translate: 4px -4px; }
+.btn, .pill-btn { position: relative; overflow: hidden; transition: translate .25s ease, box-shadow .25s ease, filter .25s ease; }
+.btn:hover, .pill-btn:hover { translate: 0 -2px; filter: brightness(1.08); }
+.btn::after, .pill-btn::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / .25) 50%, transparent 70%); translate: -120% 0; transition: translate .7s ease; }
+.btn:hover::after, .pill-btn:hover::after { translate: 120% 0; }
+@keyframes tq-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -14px; } }
+@keyframes tq-glow { 0%, 100% { opacity: .75; } 50% { opacity: 1; } }
+.hero__ribbon img, .quote-page__ribbon img, .contact-page__backdrop img { animation: tq-float 9s ease-in-out infinite; }
+.site-footer__glow, .quote-page__aurora { animation: tq-glow 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .tq-reveal { opacity: 1; translate: none; transition: none; } *, *::before, *::after { animation: none !important; } }
+
+/* =========================================================
+   Real-time (always-on) animations + interactive 3D hover
+   ========================================================= */
+@property --tq-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+
+@keyframes tq-bob      { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+@keyframes tq-spin     { to { --tq-angle: 360deg; } }
+@keyframes tq-drift    { 0% { translate: 0 0; } 33% { translate: -40px 30px; } 66% { translate: 20px 50px; } 100% { translate: 0 0; } }
+@keyframes tq-icon     { 0%, 100% { translate: 0 0; rotate: 0deg; } 25% { rotate: -6deg; } 50% { translate: 0 -5px; rotate: 0deg; } 75% { rotate: 6deg; } }
+@keyframes tq-sweep    { 0%, 70% { translate: -130% 0; } 100% { translate: 130% 0; } }
+@keyframes tq-dot      { 0%, 100% { scale: 1; opacity: 1; } 50% { scale: 1.6; opacity: .55; } }
+@keyframes tq-ring     { 0% { box-shadow: 0 0 0 0 rgb(139 92 246 / .6); } 100% { box-shadow: 0 0 0 16px rgb(139 92 246 / 0); } }
+@keyframes tq-kenburns { 0%, 100% { scale: 1.02; translate: 0 0; } 50% { scale: 1.1; translate: -2% -2%; } }
+@keyframes tq-hue      { 0%, 100% { filter: hue-rotate(0deg); } 50% { filter: hue-rotate(25deg); } }
+@keyframes tq-line     { from { background-position: 0 0; } to { background-position: 200% 0; } }
+
+/* Cards float continuously once revealed (each with its own rhythm) */
+.service-card.is-visible, .step-card.is-visible, .work-card.is-visible, .testimonial-card.is-visible, .stats__item.is-visible {
+  animation: tq-bob var(--tq-bob, 6s) ease-in-out infinite;
+  animation-delay: var(--tq-bob-delay, 0s);
+}
+
+/* Animated rotating gradient border */
+.service-card, .step-card, .work-card, .testimonial-card, .faq-card, .contact-card, .quote-card {
+  --tq-ring-color: rgb(var(--accent, 139 92 246));
+  transform-style: preserve-3d;
+  transition: transform .25s ease-out, box-shadow .35s ease, opacity .7s ease, translate .7s cubic-bezier(.22,1,.36,1);
+}
+.service-card::before, .step-card::before, .work-card::before, .testimonial-card::before, .faq-card::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  border-radius: inherit; padding: 1.5px;
+  background: conic-gradient(from var(--tq-angle), transparent 0deg, var(--tq-ring-color) 60deg, #22d3ee 110deg, transparent 170deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: tq-spin 6s linear infinite;
+  opacity: .75;
+  transition: opacity .3s ease;
+}
+.step-card, .testimonial-card, .faq-card { position: relative; }
+
+/* Light sweep passing across cards every few seconds */
+.service-card > .tq-shine, .step-card > .tq-shine, .work-card > .tq-shine, .testimonial-card > .tq-shine {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; border-radius: inherit;
+}
+.tq-shine::after {
+  content: ''; position: absolute; inset: -20% 0; width: 45%;
+  background: linear-gradient(105deg, transparent, rgb(255 255 255 / .09), transparent);
+  animation: tq-sweep 7s ease-in-out infinite; animation-delay: var(--tq-bob-delay, 0s);
+}
+
+/* Cursor spotlight (positioned by JS) */
+.tq-spot {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; border-radius: inherit; opacity: 0;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgb(var(--accent, 139 92 246) / .28), transparent 55%);
+  transition: opacity .3s ease;
+}
+
+/* Ambient glow inside service cards drifts around */
+.service-card__glow { animation: tq-drift 14s ease-in-out infinite, tq-glow 5s ease-in-out infinite; animation-delay: var(--tq-bob-delay, 0s); }
+
+/* Icons bob & wiggle */
+.icon-tile { animation: tq-icon 5s ease-in-out infinite; animation-delay: var(--tq-bob-delay, 0s); transition: scale .3s ease; }
+.icon-tile span { display: inline-block; transition: scale .3s ease, rotate .5s ease; }
+
+/* Bullets pulse, step badges ring, images slowly pan */
+.service-card__list li::before, .testimonials__eyebrow::before { animation: tq-dot 2.4s ease-in-out infinite; }
+.step-card__badge { animation: tq-ring 2.4s ease-out infinite; }
+.work-card__image img, .work-feature__image img { animation: tq-kenburns 16s ease-in-out infinite; }
+.service-card__rule {
+  background-image: linear-gradient(90deg, transparent, rgb(var(--accent, 139 92 246) / .8), #22d3ee, transparent);
+  background-size: 200% 100%; animation: tq-line 4s linear infinite;
+}
+.hero__ribbons, .testimonials__glow, .services__title { animation: tq-hue 10s ease-in-out infinite; }
+
+/* ---------- Hover: 3D tilt, faster border, spotlight, icon pop ---------- */
+.tq-tilt:hover {
+  animation-play-state: paused;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.025);
+  box-shadow: 0 30px 60px -25px rgb(var(--accent, 139 92 246) / .7), 0 0 40px -10px rgb(34 211 238 / .35);
+  z-index: 3;
+}
+.tq-tilt:hover::before { opacity: 1; animation-duration: 2s; animation-play-state: running; }
+.tq-tilt:hover > .tq-spot { opacity: 1; }
+.tq-tilt:hover .icon-tile { scale: 1.15; }
+.tq-tilt:hover .icon-tile span { scale: 1.2; rotate: 360deg; }
+.tq-tilt:hover .service-card__title, .tq-tilt:hover .step-card__title, .tq-tilt:hover .work-card__title { translate: 0 0 30px; }
+
+@media (hover: none) { .tq-tilt:hover { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .tq-tilt:hover { transform: none; }
+  .tq-shine, .tq-spot { display: none; }
+}
+
+
+/* ===== Idle animations v2 — calm & aligned (overrides the block above) ===== */
+@keyframes tq-breathe {
+  0%, 100% { box-shadow: 0 0 0 1px rgb(var(--accent, 139 92 246) / .18), 0 10px 30px -18px rgb(var(--accent, 139 92 246) / .25); }
+  50%      { box-shadow: 0 0 0 1px rgb(var(--accent, 139 92 246) / .45), 0 16px 45px -16px rgb(var(--accent, 139 92 246) / .55); }
+}
+@keyframes tq-icon-soft { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+
+/* no more bobbing (kept cards misaligned) */
+.service-card.is-visible, .step-card.is-visible, .work-card.is-visible, .testimonial-card.is-visible, .stats__item.is-visible { animation: none; }
+/* no light-sweep band */
+.tq-shine { display: none !important; }
+/* border ring only shows on hover now */
+.service-card::before, .step-card::before, .work-card::before, .testimonial-card::before, .faq-card::before { opacity: 0; }
+
+/* soft breathing glow in each card's own color, staggered so they don't pulse together */
+.service-card.is-visible, .step-card.is-visible, .work-card.is-visible, .testimonial-card.is-visible {
+  animation: tq-breathe 4.5s ease-in-out infinite;
+  animation-delay: var(--tq-bob-delay, 0s);
+}
+/* icons: tiny gentle float only (no wiggle) */
+.icon-tile { animation: tq-icon-soft 4s ease-in-out infinite; animation-delay: var(--tq-bob-delay, 0s); }
+/* quieter details */
+.service-card__list li::before { animation: none; }
+.service-card__glow { animation: tq-glow 6s ease-in-out infinite; animation-delay: var(--tq-bob-delay, 0s); }
+.hero__ribbons, .testimonials__glow, .services__title { animation: none; }
+.work-card__image img, .work-feature__image img { animation: none; }
+.work-card:hover .work-card__image img { scale: 1.06; transition: scale .6s cubic-bezier(.22,1,.36,1); }
+/* hover takes over from the breathing glow */
+.service-card.tq-tilt:hover, .step-card.tq-tilt:hover, .work-card.tq-tilt:hover, .testimonial-card.tq-tilt:hover { animation: none; }
+
+
+/* =========================================================
+   Idle animations v3 — "border beam", living gradients,
+   auto-shine buttons, shimmering gradient text, count-up.
+   (overrides v2 above)
+   ========================================================= */
+@keyframes tq-mesh   { 0% { background-position: 0% 0%, 100% 100%, 0 0; } 50% { background-position: 100% 60%, 0% 30%, 0 0; } 100% { background-position: 0% 0%, 100% 100%, 0 0; } }
+@keyframes tq-halo   { 0%, 100% { box-shadow: 0 0 0 0 rgb(var(--accent, 139 92 246) / .0), 0 0 18px -6px rgb(var(--accent, 139 92 246) / .5); }
+                       50%      { box-shadow: 0 0 0 6px rgb(var(--accent, 139 92 246) / .12), 0 0 28px -4px rgb(var(--accent, 139 92 246) / .8); } }
+@keyframes tq-autoshine { 0%, 75% { translate: -130% 0; } 100% { translate: 130% 0; } }
+@keyframes tq-textflow  { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+/* 1) Living gradient: each card's colour mesh slowly flows */
+.service-card {
+  background-size: 160% 160%, 160% 160%, 100% 100%;
+  animation: tq-mesh 14s ease-in-out infinite !important;
+  animation-delay: var(--tq-bob-delay, 0s) !important;
+}
+.step-card.is-visible, .work-card.is-visible, .testimonial-card.is-visible { animation: none; }
+
+/* 2) Border beam: a short comet of light travels around every card */
+.service-card::before, .step-card::before, .work-card::before, .testimonial-card::before {
+  opacity: 1;
+  padding: 1.5px;
+  background: conic-gradient(from var(--tq-angle),
+      transparent 0deg 300deg,
+      rgb(var(--accent, 139 92 246) / .0) 300deg,
+      rgb(var(--accent, 139 92 246)) 340deg,
+      #ffffff 356deg,
+      transparent 360deg);
+  animation: tq-spin 5s linear infinite;
+  animation-delay: var(--tq-bob-delay, 0s);
+}
+.faq-card::before { opacity: 0; }
+
+/* 3) Icon tiles glow like they're "powered on" */
+.icon-tile { animation: tq-halo 3.2s ease-in-out infinite; animation-delay: var(--tq-bob-delay, 0s); }
+
+/* 4) Card buttons get an automatic shine every few seconds */
+.service-card .pill-btn::after, .btn-quote::after {
+  animation: tq-autoshine 4.5s ease-in-out infinite;
+  animation-delay: var(--tq-bob-delay, 0s);
+}
+
+/* 5) Gradient numbers / text flow */
+.text-gradient { background-size: 200% auto; animation: tq-textflow 5s linear infinite; }
+
+/* 6) Step connectors flow */
+.step-card__connector { background-size: 200% 100%; animation: tq-line 3s linear infinite; }
+
+/* Hover still wins: pause the mesh, speed up the beam */
+.service-card.tq-tilt:hover { animation-play-state: paused !important; }
+.tq-tilt:hover::before { animation-duration: 1.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card, .icon-tile, .text-gradient, .service-card::before { animation: none !important; }
+}
