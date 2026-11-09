@@ -1,0 +1,1812 @@
+@extends('layouts.frontend.main')
+@section('title', 'Request a Quote — Techudio')
+@section('content')
+<main class="quote-page">
+      <div class="quote-page__backdrop" aria-hidden="true">
+        <div class="quote-page__swirl">
+          <div>
+            <div><img src="{{ asset('frontend/assets/images/ribbon.png') }}" alt="" /></div>
+          </div>
+        </div>
+        <img class="quote-page__aurora" src="{{ asset('frontend/assets/images/aurora.png') }}" alt="" />
+        <div class="quote-page__ribbon"><img src="{{ asset('frontend/assets/images/ribbon.png') }}" alt="" /></div>
+        <img class="quote-page__glow--left" src="{{ asset('frontend/assets/glows/quote-aurora-left.svg') }}" alt="" />
+        <img class="quote-page__glow--right" src="{{ asset('frontend/assets/glows/quote-aurora-right.svg') }}" alt="" />
+        <img class="quote-page__glow--bottom" src="{{ asset('frontend/assets/glows/quote-aurora-bottom.svg') }}" alt="" />
+      </div>
+
+      <form class="quote-card" id="quoteForm" novalidate>
+@csrf
+        <header class="quote-card__header">
+          <div class="quote-card__intro">
+            <a class="quote-card__logo" href="{{ route('home') }}">
+              <img src="{{ asset('frontend/assets/icons/terminal.svg') }}" alt="" />
+              <span>Techudio</span>
+            </a>
+            <div class="quote-card__titles">
+              <h1 class="quote-card__title">Request a Quote</h1>
+              <p class="quote-card__lead">
+                Provide details about your software, AI, or design requirements below. We'll review your
+                project scope and get back to you with a comprehensive proposal.
+              </p>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </header>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">01</span>
+            <h2 class="form-section__title">Contact Information</h2>
+          </header>
+          <div class="row row-cols-1 row-cols-md-2 form-row form-row--quote">
+            <div class="col">
+              <div class="field field--quote">
+                <label class="field__label" for="fullName">
+                  Full Name
+                  <span
+                    class="field__required bg-brand text-gradient"
+                    style="--brand-angle: 93.52deg"
+                    aria-hidden="true"
+                    >*</span
+                  >
+                </label>
+                <input
+                  class="form-control"
+                  id="fullName"
+                  name="fullName"
+                  type="text"
+                  placeholder="e.g. Michael Vance"
+                  required
+                  data-error-required="Please enter your full name."
+                />
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="field field--quote">
+                <label class="field__label" for="company"> Company Name (Optional) </label>
+                <input
+                  class="form-control"
+                  id="company"
+                  name="company"
+                  type="text"
+                  placeholder="e.g. VBS Construction Ltd"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2 form-row form-row--quote">
+            <div class="col">
+              <div class="field field--quote">
+                <label class="field__label" for="email">
+                  Email Address
+                  <span
+                    class="field__required bg-brand text-gradient"
+                    style="--brand-angle: 93.52deg"
+                    aria-hidden="true"
+                    >*</span
+                  >
+                </label>
+                <input
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="e.g. michael@vbsconstruction.com"
+                  required
+                  data-error-required="Please enter your email address."
+                  data-error-invalid="Please enter a valid email address."
+                />
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="field field--quote">
+                <label class="field__label" for="phone">
+                  Phone Number / WhatsApp
+                  <span
+                    class="field__required bg-brand text-gradient"
+                    style="--brand-angle: 93.52deg"
+                    aria-hidden="true"
+                    >*</span
+                  >
+                </label>
+                <input
+                  class="form-control"
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="e.g. +44 20 7946 0192"
+                  required
+                  data-error-required="Please enter a phone or WhatsApp number."
+                />
+                <div class="invalid-feedback"></div>
+              </div>
+            </div>
+          </div>
+          <div class="quote-country">
+            <div class="field field--quote">
+              <label class="field__label" for="country">
+                Country
+                <span
+                  class="field__required bg-brand text-gradient"
+                  style="--brand-angle: 93.52deg"
+                  aria-hidden="true"
+                  >*</span
+                >
+              </label>
+              <select
+                class="form-select"
+                id="country"
+                name="country"
+                required
+                data-error-required="Please select your country."
+              >
+                <option value="" selected disabled>Select country</option>
+                <option>Afghanistan</option>
+                <option>Albania</option>
+                <option>Algeria</option>
+                <option>Andorra</option>
+                <option>Angola</option>
+                <option>Antigua and Barbuda</option>
+                <option>Argentina</option>
+                <option>Armenia</option>
+                <option>Australia</option>
+                <option>Austria</option>
+                <option>Azerbaijan</option>
+                <option>Bahamas</option>
+                <option>Bahrain</option>
+                <option>Bangladesh</option>
+                <option>Barbados</option>
+                <option>Belarus</option>
+                <option>Belgium</option>
+                <option>Belize</option>
+                <option>Benin</option>
+                <option>Bhutan</option>
+                <option>Bolivia</option>
+                <option>Bosnia and Herzegovina</option>
+                <option>Botswana</option>
+                <option>Brazil</option>
+                <option>Brunei</option>
+                <option>Bulgaria</option>
+                <option>Burkina Faso</option>
+                <option>Burundi</option>
+                <option>Cabo Verde</option>
+                <option>Cambodia</option>
+                <option>Cameroon</option>
+                <option>Canada</option>
+                <option>Central African Republic</option>
+                <option>Chad</option>
+                <option>Chile</option>
+                <option>China</option>
+                <option>Colombia</option>
+                <option>Comoros</option>
+                <option>Congo</option>
+                <option>Costa Rica</option>
+                <option>Côte d'Ivoire</option>
+                <option>Croatia</option>
+                <option>Cuba</option>
+                <option>Cyprus</option>
+                <option>Czechia</option>
+                <option>Democratic Republic of the Congo</option>
+                <option>Denmark</option>
+                <option>Djibouti</option>
+                <option>Dominica</option>
+                <option>Dominican Republic</option>
+                <option>Ecuador</option>
+                <option>Egypt</option>
+                <option>El Salvador</option>
+                <option>Equatorial Guinea</option>
+                <option>Eritrea</option>
+                <option>Estonia</option>
+                <option>Eswatini</option>
+                <option>Ethiopia</option>
+                <option>Fiji</option>
+                <option>Finland</option>
+                <option>France</option>
+                <option>Gabon</option>
+                <option>Gambia</option>
+                <option>Georgia</option>
+                <option>Germany</option>
+                <option>Ghana</option>
+                <option>Greece</option>
+                <option>Grenada</option>
+                <option>Guatemala</option>
+                <option>Guinea</option>
+                <option>Guinea-Bissau</option>
+                <option>Guyana</option>
+                <option>Haiti</option>
+                <option>Honduras</option>
+                <option>Hungary</option>
+                <option>Iceland</option>
+                <option>India</option>
+                <option>Indonesia</option>
+                <option>Iran</option>
+                <option>Iraq</option>
+                <option>Ireland</option>
+                <option>Israel</option>
+                <option>Italy</option>
+                <option>Jamaica</option>
+                <option>Japan</option>
+                <option>Jordan</option>
+                <option>Kazakhstan</option>
+                <option>Kenya</option>
+                <option>Kiribati</option>
+                <option>Kuwait</option>
+                <option>Kyrgyzstan</option>
+                <option>Laos</option>
+                <option>Latvia</option>
+                <option>Lebanon</option>
+                <option>Lesotho</option>
+                <option>Liberia</option>
+                <option>Libya</option>
+                <option>Liechtenstein</option>
+                <option>Lithuania</option>
+                <option>Luxembourg</option>
+                <option>Madagascar</option>
+                <option>Malawi</option>
+                <option>Malaysia</option>
+                <option>Maldives</option>
+                <option>Mali</option>
+                <option>Malta</option>
+                <option>Marshall Islands</option>
+                <option>Mauritania</option>
+                <option>Mauritius</option>
+                <option>Mexico</option>
+                <option>Micronesia</option>
+                <option>Moldova</option>
+                <option>Monaco</option>
+                <option>Mongolia</option>
+                <option>Montenegro</option>
+                <option>Morocco</option>
+                <option>Mozambique</option>
+                <option>Myanmar</option>
+                <option>Namibia</option>
+                <option>Nauru</option>
+                <option>Nepal</option>
+                <option>Netherlands</option>
+                <option>New Zealand</option>
+                <option>Nicaragua</option>
+                <option>Niger</option>
+                <option>Nigeria</option>
+                <option>North Korea</option>
+                <option>North Macedonia</option>
+                <option>Norway</option>
+                <option>Oman</option>
+                <option>Pakistan</option>
+                <option>Palau</option>
+                <option>Palestine</option>
+                <option>Panama</option>
+                <option>Papua New Guinea</option>
+                <option>Paraguay</option>
+                <option>Peru</option>
+                <option>Philippines</option>
+                <option>Poland</option>
+                <option>Portugal</option>
+                <option>Qatar</option>
+                <option>Romania</option>
+                <option>Russia</option>
+                <option>Rwanda</option>
+                <option>Saint Kitts and Nevis</option>
+                <option>Saint Lucia</option>
+                <option>Saint Vincent and the Grenadines</option>
+                <option>Samoa</option>
+                <option>San Marino</option>
+                <option>Sao Tome and Principe</option>
+                <option>Saudi Arabia</option>
+                <option>Senegal</option>
+                <option>Serbia</option>
+                <option>Seychelles</option>
+                <option>Sierra Leone</option>
+                <option>Singapore</option>
+                <option>Slovakia</option>
+                <option>Slovenia</option>
+                <option>Solomon Islands</option>
+                <option>Somalia</option>
+                <option>South Africa</option>
+                <option>South Korea</option>
+                <option>South Sudan</option>
+                <option>Spain</option>
+                <option>Sri Lanka</option>
+                <option>Sudan</option>
+                <option>Suriname</option>
+                <option>Sweden</option>
+                <option>Switzerland</option>
+                <option>Syria</option>
+                <option>Taiwan</option>
+                <option>Tajikistan</option>
+                <option>Tanzania</option>
+                <option>Thailand</option>
+                <option>Timor-Leste</option>
+                <option>Togo</option>
+                <option>Tonga</option>
+                <option>Trinidad and Tobago</option>
+                <option>Tunisia</option>
+                <option>Turkey</option>
+                <option>Turkmenistan</option>
+                <option>Tuvalu</option>
+                <option>Uganda</option>
+                <option>Ukraine</option>
+                <option>United Arab Emirates</option>
+                <option>United Kingdom</option>
+                <option>United States</option>
+                <option>Uruguay</option>
+                <option>Uzbekistan</option>
+                <option>Vanuatu</option>
+                <option>Vatican City</option>
+                <option>Venezuela</option>
+                <option>Vietnam</option>
+                <option>Yemen</option>
+                <option>Zambia</option>
+                <option>Zimbabwe</option>
+              </select>
+              <div class="invalid-feedback"></div>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">02</span>
+            <h2 class="form-section__title">Which service(s) are you looking for? (Multiple selection)</h2>
+          </header>
+          <div class="row row-cols-1 row-cols-md-2 service-picker">
+            <div class="col">
+              <div class="service-picker__col">
+                <div class="service-group" role="group" aria-labelledby="service-group-web">
+                  <h3 class="service-group__title" id="service-group-web">Web Solutions</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-1"
+                        value="web:Website Development"
+                      />
+                      <label class="form-check-label" for="service-web-1">Website Development</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-2"
+                        value="web:Website Design"
+                      />
+                      <label class="form-check-label" for="service-web-2">Website Design</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-3"
+                        value="web:Website Redesign"
+                      />
+                      <label class="form-check-label" for="service-web-3">Website Redesign</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-4"
+                        value="web:Website Maintenance"
+                      />
+                      <label class="form-check-label" for="service-web-4">Website Maintenance</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-5"
+                        value="web:Custom Admin Panel"
+                      />
+                      <label class="form-check-label" for="service-web-5">Custom Admin Panel</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-6"
+                        value="web:Web Application Development"
+                      />
+                      <label class="form-check-label" for="service-web-6">Web Application Development</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-7"
+                        value="web:CMS Development"
+                      />
+                      <label class="form-check-label" for="service-web-7">CMS Development</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-8"
+                        value="web:Multilingual Website"
+                      />
+                      <label class="form-check-label" for="service-web-8">Multilingual Website</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-web-9"
+                        value="web:E-Commerce Development"
+                      />
+                      <label class="form-check-label" for="service-web-9">E-Commerce Development</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-ai">
+                  <h3 class="service-group__title" id="service-group-ai">AI &amp; Machine Learning</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-1"
+                        value="ai:AI Chatbot"
+                      />
+                      <label class="form-check-label" for="service-ai-1">AI Chatbot</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-2"
+                        value="ai:AI Agent"
+                      />
+                      <label class="form-check-label" for="service-ai-2">AI Agent</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-3"
+                        value="ai:Live AI Agent"
+                      />
+                      <label class="form-check-label" for="service-ai-3">Live AI Agent</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-4"
+                        value="ai:AI Integration"
+                      />
+                      <label class="form-check-label" for="service-ai-4">AI Integration</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-5"
+                        value="ai:ChatGPT / Claude / Gemini Integration"
+                      />
+                      <label class="form-check-label" for="service-ai-5"
+                        >ChatGPT / Claude / Gemini Integration</label
+                      >
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-6"
+                        value="ai:Machine Learning Model"
+                      />
+                      <label class="form-check-label" for="service-ai-6">Machine Learning Model</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-7"
+                        value="ai:NLP"
+                      />
+                      <label class="form-check-label" for="service-ai-7">NLP</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-8"
+                        value="ai:AI Automation"
+                      />
+                      <label class="form-check-label" for="service-ai-8">AI Automation</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-9"
+                        value="ai:Data Pipeline"
+                      />
+                      <label class="form-check-label" for="service-ai-9">Data Pipeline</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-10"
+                        value="ai:Model Fine-tuning"
+                      />
+                      <label class="form-check-label" for="service-ai-10">Model Fine-tuning</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ai-11"
+                        value="ai:Prompt Testing"
+                      />
+                      <label class="form-check-label" for="service-ai-11">Prompt Testing</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-ui">
+                  <h3 class="service-group__title" id="service-group-ui">UI/UX</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ui-1"
+                        value="ui:UI/UX Design"
+                      />
+                      <label class="form-check-label" for="service-ui-1">UI/UX Design</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ui-2"
+                        value="ui:Wireframe"
+                      />
+                      <label class="form-check-label" for="service-ui-2">Wireframe</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ui-3"
+                        value="ui:Mockup"
+                      />
+                      <label class="form-check-label" for="service-ui-3">Mockup</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-ui-4"
+                        value="ui:Dark Mode Design"
+                      />
+                      <label class="form-check-label" for="service-ui-4">Dark Mode Design</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-integrations">
+                  <h3 class="service-group__title" id="service-group-integrations">Integrations</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-1"
+                        value="integrations:API Development"
+                      />
+                      <label class="form-check-label" for="service-integrations-1">API Development</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-2"
+                        value="integrations:Third-party API"
+                      />
+                      <label class="form-check-label" for="service-integrations-2">Third-party API</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-3"
+                        value="integrations:WhatsApp API"
+                      />
+                      <label class="form-check-label" for="service-integrations-3">WhatsApp API</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-4"
+                        value="integrations:Social Media API"
+                      />
+                      <label class="form-check-label" for="service-integrations-4">Social Media API</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-5"
+                        value="integrations:SDK Integration"
+                      />
+                      <label class="form-check-label" for="service-integrations-5">SDK Integration</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-6"
+                        value="integrations:Custom Library Integration"
+                      />
+                      <label class="form-check-label" for="service-integrations-6"
+                        >Custom Library Integration</label
+                      >
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-7"
+                        value="integrations:Payment Gateway"
+                      />
+                      <label class="form-check-label" for="service-integrations-7">Payment Gateway</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-8"
+                        value="integrations:CRM/ERP"
+                      />
+                      <label class="form-check-label" for="service-integrations-8">CRM/ERP</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-9"
+                        value="integrations:Live Chat"
+                      />
+                      <label class="form-check-label" for="service-integrations-9">Live Chat</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-10"
+                        value="integrations:OAuth / SSO"
+                      />
+                      <label class="form-check-label" for="service-integrations-10">OAuth / SSO</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-11"
+                        value="integrations:Maps"
+                      />
+                      <label class="form-check-label" for="service-integrations-11">Maps</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-12"
+                        value="integrations:Push Notifications"
+                      />
+                      <label class="form-check-label" for="service-integrations-12">Push Notifications</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-13"
+                        value="integrations:Analytics"
+                      />
+                      <label class="form-check-label" for="service-integrations-13">Analytics</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-14"
+                        value="integrations:Data Scraping"
+                      />
+                      <label class="form-check-label" for="service-integrations-14">Data Scraping</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-integrations-15"
+                        value="integrations:Summarization Tool"
+                      />
+                      <label class="form-check-label" for="service-integrations-15">Summarization Tool</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-architecture">
+                  <h3 class="service-group__title" id="service-group-architecture">Architecture</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-architecture-1"
+                        value="architecture:Software Architecture"
+                      />
+                      <label class="form-check-label" for="service-architecture-1"
+                        >Software Architecture</label
+                      >
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-architecture-2"
+                        value="architecture:Database Architecture"
+                      />
+                      <label class="form-check-label" for="service-architecture-2"
+                        >Database Architecture</label
+                      >
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-architecture-3"
+                        value="architecture:API Architecture"
+                      />
+                      <label class="form-check-label" for="service-architecture-3">API Architecture</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-architecture-4"
+                        value="architecture:Technical Documentation"
+                      />
+                      <label class="form-check-label" for="service-architecture-4"
+                        >Technical Documentation</label
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="service-picker__col">
+                <div class="service-group" role="group" aria-labelledby="service-group-mobile">
+                  <h3 class="service-group__title" id="service-group-mobile">Mobile Apps</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-1"
+                        value="mobile:Android App"
+                      />
+                      <label class="form-check-label" for="service-mobile-1">Android App</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-2"
+                        value="mobile:iOS App"
+                      />
+                      <label class="form-check-label" for="service-mobile-2">iOS App</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-3"
+                        value="mobile:Cross Platform App"
+                      />
+                      <label class="form-check-label" for="service-mobile-3">Cross Platform App</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-4"
+                        value="mobile:Mobile App Design"
+                      />
+                      <label class="form-check-label" for="service-mobile-4">Mobile App Design</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-5"
+                        value="mobile:App Localization"
+                      />
+                      <label class="form-check-label" for="service-mobile-5">App Localization</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-6"
+                        value="mobile:App Maintenance"
+                      />
+                      <label class="form-check-label" for="service-mobile-6">App Maintenance</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-7"
+                        value="mobile:App Testing"
+                      />
+                      <label class="form-check-label" for="service-mobile-7">App Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-mobile-8"
+                        value="mobile:App Modernization"
+                      />
+                      <label class="form-check-label" for="service-mobile-8">App Modernization</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-deployment">
+                  <h3 class="service-group__title" id="service-group-deployment">Deployment</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-1"
+                        value="deployment:Play Store Publishing"
+                      />
+                      <label class="form-check-label" for="service-deployment-1">Play Store Publishing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-2"
+                        value="deployment:App Store Publishing"
+                      />
+                      <label class="form-check-label" for="service-deployment-2">App Store Publishing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-3"
+                        value="deployment:Huawei AppGallery"
+                      />
+                      <label class="form-check-label" for="service-deployment-3">Huawei AppGallery</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-4"
+                        value="deployment:Samsung Store"
+                      />
+                      <label class="form-check-label" for="service-deployment-4">Samsung Store</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-5"
+                        value="deployment:ASO"
+                      />
+                      <label class="form-check-label" for="service-deployment-5">ASO</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-6"
+                        value="deployment:Beta Testing"
+                      />
+                      <label class="form-check-label" for="service-deployment-6">Beta Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-7"
+                        value="deployment:Website Deployment"
+                      />
+                      <label class="form-check-label" for="service-deployment-7">Website Deployment</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-deployment-8"
+                        value="deployment:Cloud Deployment"
+                      />
+                      <label class="form-check-label" for="service-deployment-8">Cloud Deployment</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-maintenance">
+                  <h3 class="service-group__title" id="service-group-maintenance">Maintenance</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-1"
+                        value="maintenance:Website Maintenance"
+                      />
+                      <label class="form-check-label" for="service-maintenance-1">Website Maintenance</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-2"
+                        value="maintenance:App Maintenance"
+                      />
+                      <label class="form-check-label" for="service-maintenance-2">App Maintenance</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-3"
+                        value="maintenance:Bug Fixes"
+                      />
+                      <label class="form-check-label" for="service-maintenance-3">Bug Fixes</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-4"
+                        value="maintenance:Library Updates"
+                      />
+                      <label class="form-check-label" for="service-maintenance-4">Library Updates</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-5"
+                        value="maintenance:Performance Optimization"
+                      />
+                      <label class="form-check-label" for="service-maintenance-5"
+                        >Performance Optimization</label
+                      >
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-6"
+                        value="maintenance:Security Updates"
+                      />
+                      <label class="form-check-label" for="service-maintenance-6">Security Updates</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-7"
+                        value="maintenance:Backup"
+                      />
+                      <label class="form-check-label" for="service-maintenance-7">Backup</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-8"
+                        value="maintenance:Documentation"
+                      />
+                      <label class="form-check-label" for="service-maintenance-8">Documentation</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-9"
+                        value="maintenance:Code Review"
+                      />
+                      <label class="form-check-label" for="service-maintenance-9">Code Review</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-maintenance-10"
+                        value="maintenance:Technical Support"
+                      />
+                      <label class="form-check-label" for="service-maintenance-10">Technical Support</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-cloud">
+                  <h3 class="service-group__title" id="service-group-cloud">Cloud</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-1"
+                        value="cloud:Hosting"
+                      />
+                      <label class="form-check-label" for="service-cloud-1">Hosting</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-2"
+                        value="cloud:Cloud Infrastructure"
+                      />
+                      <label class="form-check-label" for="service-cloud-2">Cloud Infrastructure</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-3"
+                        value="cloud:Server Configuration"
+                      />
+                      <label class="form-check-label" for="service-cloud-3">Server Configuration</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-4"
+                        value="cloud:Domain &amp; DNS"
+                      />
+                      <label class="form-check-label" for="service-cloud-4">Domain &amp; DNS</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-5"
+                        value="cloud:SSL"
+                      />
+                      <label class="form-check-label" for="service-cloud-5">SSL</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-6"
+                        value="cloud:Database"
+                      />
+                      <label class="form-check-label" for="service-cloud-6">Database</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-7"
+                        value="cloud:Server Migration"
+                      />
+                      <label class="form-check-label" for="service-cloud-7">Server Migration</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-8"
+                        value="cloud:Speed Optimization"
+                      />
+                      <label class="form-check-label" for="service-cloud-8">Speed Optimization</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-cloud-9"
+                        value="cloud:Accessibility"
+                      />
+                      <label class="form-check-label" for="service-cloud-9">Accessibility</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="service-group" role="group" aria-labelledby="service-group-qa">
+                  <h3 class="service-group__title" id="service-group-qa">QA</h3>
+                  <div class="choice-list">
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-1"
+                        value="qa:Functional Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-1">Functional Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-2"
+                        value="qa:Security Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-2">Security Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-3"
+                        value="qa:Performance Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-3">Performance Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-4"
+                        value="qa:Cross Device Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-4">Cross Device Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-5"
+                        value="qa:Regression Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-5">Regression Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-6"
+                        value="qa:Smoke Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-6">Smoke Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-7"
+                        value="qa:Automated Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-7">Automated Testing</label>
+                    </div>
+                    <div class="form-check choice">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        name="services"
+                        id="service-qa-8"
+                        value="qa:Manual Testing"
+                      />
+                      <label class="form-check-label" for="service-qa-8">Manual Testing</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="other-services">
+            <h3 class="other-services__title">Add any other Services</h3>
+            <div class="field field--quote">
+              <textarea
+                class="form-control"
+                id="otherServices"
+                name="otherServices"
+                placeholder="Write here about your service"
+                aria-label="Add any other Services"
+              ></textarea>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">03</span>
+            <h2 class="form-section__title">Tell us about your project</h2>
+          </header>
+          <div class="field field--quote">
+            <label class="field__label" for="description">Describe your project (Optional)</label>
+            <textarea
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="I need an e-commerce website with payment integration and admin panel."
+            ></textarea>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">04</span>
+            <h2 class="form-section__title">What best describes your project?</h2>
+          </header>
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-xl-5 choice-row" role="radiogroup">
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="projectType"
+                  id="projectType-1"
+                  value="New Project"
+                />
+                <label class="form-check-label" for="projectType-1">New Project</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="projectType"
+                  id="projectType-2"
+                  value="Existing Project"
+                />
+                <label class="form-check-label" for="projectType-2">Existing Project</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="projectType"
+                  id="projectType-3"
+                  value="Redesign Existing System"
+                />
+                <label class="form-check-label" for="projectType-3">Redesign Existing System</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="projectType"
+                  id="projectType-4"
+                  value="Need Maintenance"
+                />
+                <label class="form-check-label" for="projectType-4">Need Maintenance</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="projectType"
+                  id="projectType-5"
+                  value="Need Consultation"
+                />
+                <label class="form-check-label" for="projectType-5">Need Consultation</label>
+              </div>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">05</span>
+            <h2 class="form-section__title">Select your estimated budget (optional)</h2>
+          </header>
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-xl-6 choice-row" role="radiogroup">
+            <div class="col">
+              <div class="form-check choice">
+                <input class="form-check-input" type="radio" name="budget" id="budget-1" value="Under $500" />
+                <label class="form-check-label" for="budget-1">Under $500</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  id="budget-2"
+                  value="$1,000-$5,000"
+                />
+                <label class="form-check-label" for="budget-2">$1,000-$5,000</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  id="budget-3"
+                  value="$5,000-$10,000"
+                />
+                <label class="form-check-label" for="budget-3">$5,000-$10,000</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="budget"
+                  id="budget-4"
+                  value="$10,000-$25,000"
+                />
+                <label class="form-check-label" for="budget-4">$10,000-$25,000</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input class="form-check-input" type="radio" name="budget" id="budget-5" value="$25,000+" />
+                <label class="form-check-label" for="budget-5">$25,000+</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input class="form-check-input" type="radio" name="budget" id="budget-6" value="Not Sure" />
+                <label class="form-check-label" for="budget-6">Not Sure</label>
+              </div>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">06</span>
+            <h2 class="form-section__title">Expected Timeline</h2>
+          </header>
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-xl-5 choice-row" role="radiogroup">
+            <div class="col">
+              <div class="form-check choice">
+                <input class="form-check-input" type="radio" name="timeline" id="timeline-1" value="ASAP" />
+                <label class="form-check-label" for="timeline-1">ASAP</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeline"
+                  id="timeline-2"
+                  value="Within 1 Month"
+                />
+                <label class="form-check-label" for="timeline-2">Within 1 Month</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeline"
+                  id="timeline-3"
+                  value="1-3 Months"
+                />
+                <label class="form-check-label" for="timeline-3">1-3 Months</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeline"
+                  id="timeline-4"
+                  value="3-6 Months"
+                />
+                <label class="form-check-label" for="timeline-4">3-6 Months</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="timeline"
+                  id="timeline-5"
+                  value="Flexible"
+                />
+                <label class="form-check-label" for="timeline-5">Flexible</label>
+              </div>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">07</span>
+            <h2 class="form-section__title">Do you already have? (Optional)</h2>
+          </header>
+          <div class="choice-list">
+            <div class="form-check choice">
+              <input class="form-check-input" type="checkbox" name="assets" id="asset-1" value="Logo" />
+              <label class="form-check-label" for="asset-1">Logo</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="assets"
+                id="asset-2"
+                value="Brand Guidelines"
+              />
+              <label class="form-check-label" for="asset-2">Brand Guidelines</label>
+            </div>
+            <div class="form-check choice">
+              <input class="form-check-input" type="checkbox" name="assets" id="asset-3" value="UI Design" />
+              <label class="form-check-label" for="asset-3">UI Design</label>
+            </div>
+            <div class="form-check choice">
+              <input class="form-check-input" type="checkbox" name="assets" id="asset-4" value="Wireframes" />
+              <label class="form-check-label" for="asset-4">Wireframes</label>
+            </div>
+            <div class="form-check choice">
+              <input class="form-check-input" type="checkbox" name="assets" id="asset-5" value="Domain" />
+              <label class="form-check-label" for="asset-5">Domain</label>
+            </div>
+            <div class="form-check choice">
+              <input class="form-check-input" type="checkbox" name="assets" id="asset-6" value="Hosting" />
+              <label class="form-check-label" for="asset-6">Hosting</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="assets"
+                id="asset-7"
+                value="Existing Website"
+              />
+              <label class="form-check-label" for="asset-7">Existing Website</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="assets"
+                id="asset-8"
+                value="Existing Mobile App"
+              />
+              <label class="form-check-label" for="asset-8">Existing Mobile App</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="assets"
+                id="asset-9"
+                value="API Documentation"
+              />
+              <label class="form-check-label" for="asset-9">API Documentation</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="assets"
+                id="asset-10"
+                value="Design Files (Figma/XD)"
+              />
+              <label class="form-check-label" for="asset-10">Design Files (Figma/XD)</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="assets"
+                id="asset-11"
+                value="Source Code"
+              />
+              <label class="form-check-label" for="asset-11">Source Code</label>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">08</span>
+            <h2 class="form-section__title">Preferred Communication</h2>
+          </header>
+          <div class="row row-cols-2 row-cols-sm-3 row-cols-xl-5 choice-row" role="radiogroup">
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="communication"
+                  id="communication-1"
+                  value="Email"
+                />
+                <label class="form-check-label" for="communication-1">Email</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="communication"
+                  id="communication-2"
+                  value="Phone"
+                />
+                <label class="form-check-label" for="communication-2">Phone</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="communication"
+                  id="communication-3"
+                  value="WhatsApp"
+                />
+                <label class="form-check-label" for="communication-3">WhatsApp</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="communication"
+                  id="communication-4"
+                  value="Google Meet"
+                />
+                <label class="form-check-label" for="communication-4">Google Meet</label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check choice">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="communication"
+                  id="communication-5"
+                  value="Zoom"
+                />
+                <label class="form-check-label" for="communication-5">Zoom</label>
+              </div>
+            </div>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">09</span>
+            <h2 class="form-section__title">Upload any relevant files (If Any)</h2>
+          </header>
+          <div class="dropzone" data-dropzone>
+            <button class="dropzone__zone" type="button">
+              <span class="dropzone__icon"><img src="{{ asset('frontend/assets/icons/upload.svg') }}" alt="" /></span>
+              <span class="dropzone__text">
+                <span class="dropzone__title">Drag &amp; drop files here</span>
+                <span class="dropzone__hint">PDF, DOCX, ZIP, APK, IPA, PNG, JPG, Figma Link, XD Files</span>
+              </span>
+            </button>
+            <input class="visually-hidden" type="file" name="files" multiple tabindex="-1" />
+            <ul class="dropzone__files" hidden></ul>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">10</span>
+            <h2 class="form-section__title">Any other details you would like us to know?</h2>
+          </header>
+          <div class="field field--quote">
+            <textarea
+              class="form-control"
+              id="details"
+              name="details"
+              placeholder="Add details regarding specific timelines, container consolidation requirements, or special coordination schedules..."
+              aria-label="Any other details you would like us to know?"
+            ></textarea>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <div class="nda-box">
+          <p class="nda-box__question">Do you want us to sign NDA (Non Disclosure Agreement)?</p>
+          <div class="choice-list" role="radiogroup">
+            <div class="form-check choice choice--square">
+              <input class="form-check-input" type="radio" name="nda" id="nda-1" value="Yes" />
+              <label class="form-check-label" for="nda-1">Yes</label>
+            </div>
+            <div class="form-check choice choice--square">
+              <input class="form-check-input" type="radio" name="nda" id="nda-2" value="No" />
+              <label class="form-check-label" for="nda-2">No</label>
+            </div>
+            <div class="form-check choice choice--square">
+              <input class="form-check-input" type="radio" name="nda" id="nda-3" value="Not sure" />
+              <label class="form-check-label" for="nda-3">Not sure</label>
+            </div>
+          </div>
+        </div>
+
+        <section class="form-section">
+          <header class="form-section__head">
+            <span class="form-section__badge bg-brand">11</span>
+            <h2 class="form-section__title">Consent</h2>
+          </header>
+          <div class="choice-list">
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="agreePrivacy"
+                id="agreePrivacy"
+                value="yes"
+                required
+                data-error-required="Please agree to the Privacy Policy."
+              />
+              <label class="form-check-label" for="agreePrivacy">I agree to the Privacy Policy.</label>
+            </div>
+            <div class="form-check choice">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="agreeContact"
+                id="agreeContact"
+                value="yes"
+                required
+                data-error-required="Please agree to be contacted about your project."
+              />
+              <label class="form-check-label" for="agreeContact"
+                >I agree that Techudio may contact me regarding my project.</label
+              >
+            </div>
+            <p class="form-error" data-consent-error hidden></p>
+          </div>
+          <div class="divider" aria-hidden="true"><img src="{{ asset('frontend/assets/icons/divider-line.svg') }}" alt="" /></div>
+        </section>
+
+        <div class="quote-submit">
+          <button class="bg-brand" type="submit">Get My Free Quote <span>🚀</span></button>
+        </div>
+      </form>
+    </main>
+
+
+    <!-- Thank-you overlay, opened by js/main.js after a successful submit -->
+    <div
+      class="modal fade thankyou"
+      id="thankYouModal"
+      tabindex="-1"
+      aria-labelledby="thankYouTitle"
+      aria-hidden="true"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+    >
+      <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+          <div class="thankyou__backdrop"><img src="{{ asset('frontend/assets/images/aurora.png') }}" alt="" /></div>
+
+          <div class="thankyou__card">
+            <div class="thankyou__icon bg-brand"><img src="{{ asset('frontend/assets/icons/check.svg') }}" alt="" /></div>
+            <div class="thankyou__text">
+              <h2 class="thankyou__title" id="thankYouTitle">Thank You for Contacting Techudio!</h2>
+              <p class="thankyou__subtitle bg-brand text-gradient">We've received your inquiry.</p>
+              <div class="thankyou__body">
+                <p>
+                  Our experts are now reviewing your requirements and will contact you shortly with a
+                  personalized proposal.
+                </p>
+                <p>We appreciate the opportunity to work with you.</p>
+              </div>
+            </div>
+            <div class="thankyou__action">
+              <a class="bg-brand" href="{{ route('home') }}">
+                <span>Back to Home</span>
+                <img src="{{ asset('frontend/assets/icons/rocket.svg') }}" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+@endsection

@@ -1,7 +1,7 @@
 <header class="site-header">
     <nav class="navbar navbar-expand-xl site-nav" aria-label="Main">
         <div class="container-fluid container-nav">
-            <a class="navbar-brand site-brand" href="index.html">
+            <a class="navbar-brand site-brand" href="{{ route('home') }}">
                 <img src="{{ asset('frontend/assets/icons/logo-mark.svg') }}" alt="" />
                 <span>Techudio</span>
             </a>
@@ -24,8 +24,8 @@
                         <li class="nav-item"><a class="nav-link" href="{{ route('home') }}#our-work">Our Work</a></li>
                     </ul>
                     <div class="site-nav__actions">
-                        <a class="btn btn-quote" href="{{ route('home') }}#request-a-quote">Get a Free Quote</a>
-                        <a class="btn btn-contact" href="{{ route('home') }}#contact-us">Contact us</a>
+                        <a class="btn btn-quote" href="{{ route('quote') }}">Get a Free Quote</a>
+                        <a class="btn btn-contact" href="{{ route('contact') }}">Contact us</a>
                     </div>
                 </div>
             </div>

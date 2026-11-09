@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Techudio</title>
+    <title>@yield('title', 'Techudio')</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('frontend/assets/favicon.svg') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,12 +17,16 @@
 
 <body>
     <!-- Navbar -->
-    @include('layouts.frontend.header')
+    @unless (View::hasSection('bare'))
+        @include('layouts.frontend.header')
+    @endunless
 
     @yield('content')
 
     <!-- Footer -->
-    @include('layouts.frontend.footer')
+    @unless (View::hasSection('bare'))
+        @include('layouts.frontend.footer')
+    @endunless
 
     <script src="{{ asset('frontend/vendor/bootstrap/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>

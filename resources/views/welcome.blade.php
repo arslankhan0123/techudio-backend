@@ -1,5 +1,5 @@
 @extends('layouts.frontend.main')
-@section('title', 'Quick News Global — AI News Summaries in 45 Words')
+@section('title', 'Home - Techudio')
 @section('canonical', url('/'))
 @section('meta')
 @endsection
@@ -24,8 +24,8 @@
                 reliable solutions that drive growth, improve efficiency, and create lasting business value.
             </p>
             <div class="hero__actions">
-                <a class="btn btn-quote" href="request-a-quote.html">Get a Free Quote</a>
-                <a class="btn btn-contact" href="contact-us.html">Contact us</a>
+                <a class="btn btn-quote" href="{{ route('quote') }}">Get a Free Quote</a>
+                <a class="btn btn-contact" href="{{ route('contact') }}">Contact us</a>
             </div>
             <p class="hero__tagline">
                 You built it with AI? We help you launch, improve, maintain and scale it.
@@ -95,7 +95,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -136,7 +136,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -180,7 +180,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -203,7 +203,7 @@
                         </div>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -244,7 +244,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -287,7 +287,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -335,7 +335,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -377,7 +377,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -419,7 +419,7 @@
                         </button>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -442,7 +442,7 @@
                         </div>
                         <div class="service-card__foot">
                             <div>
-                                <a class="pill-btn" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                                <a class="pill-btn" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
                             </div>
                         </div>
                     </article>
@@ -450,7 +450,7 @@
             </div>
 
             <div class="services__cta">
-                <a class="btn-3d" href="request-a-quote.html"><span>Get a Free Quote</span></a>
+                <a class="btn-3d" href="{{ route('quote') }}"><span>Get a Free Quote</span></a>
             </div>
         </div>
     </section>

@@ -7,6 +7,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::view('/request-a-quote', 'frontend.request-a-quote')->name('quote');
+Route::view('/contact-us', 'frontend.contact-us')->name('contact');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
